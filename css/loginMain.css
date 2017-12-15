@@ -1,0 +1,146 @@
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ffffff;
+  font-size: 0.26666667rem;
+  height: 0.93333333rem;
+  line-height: 0.53333333rem;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ffffff;
+  font-size: 0.26666667rem;
+  height: 0.93333333rem;
+  line-height: 0.53333333rem;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-size: 0.26666667rem;
+  color: #ffffff;
+  height: 0.93333333rem;
+  line-height: 0.53333333rem;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ffffff;
+  font-size: 0.26666667rem;
+  height: 0.93333333rem;
+  line-height: 0.53333333rem;
+}
+body {
+  position: relative;
+  background: url(../img/bg.png) no-repeat;
+  background-size: cover;
+}
+.mainBox {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: 0.96rem;
+}
+.mainBox .logoBox {
+  width: 2.36rem;
+  height: 2.36rem;
+  background: url(../img/logo.png) no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+.mainBox .logoText {
+  width: 100%;
+  height: 0.66666667rem;
+  line-height: 0.66666667rem;
+  font-size: 0.53333333rem;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 0.26666667rem;
+  color: #fff;
+}
+.mainBox .inputBox {
+  position: relative;
+  padding-top: 1.25333333rem;
+}
+.mainBox .inputBox .infoBox {
+  position: relative;
+  width: 84%;
+  height: 1.25333333rem;
+  line-height: 1.25333333rem;
+  font-size: 0.26666667rem;
+  background: rgba(255, 255, 255, 0.26);
+  border-radius: 10 px;
+  margin: 0 auto 0.8rem auto;
+  overflow: hidden;
+}
+.mainBox .inputBox .infoBox .infoBg {
+  position: absolute;
+  z-index: 1;
+}
+.mainBox .inputBox .infoBox .infoBg.userBg {
+  left: 0.4rem;
+  top: 0.45333333rem;
+  width: 0.34666667rem;
+  height: 0.38666667rem;
+  background: url(../img/user.png) no-repeat;
+  background-size: cover;
+}
+.mainBox .inputBox .infoBox .infoBg.passwordBg {
+  left: 0.4rem;
+  top: 0.45333333rem;
+  width: 0.34666667rem;
+  height: 0.41333333rem;
+  background: url(../img/password.png) no-repeat;
+  background-size: cover;
+}
+.mainBox .inputBox .infoBox input {
+  width: 100%;
+  height: 100%;
+  font-size: 0.37333333rem;
+  color: #d6ebfb;
+  background: none!important;
+  letter-spacing: 3px;
+  word-spacing: 3px;
+  text-indent: 0.93333333rem;
+}
+.mainBox .loginBtn {
+  width: 84%;
+  height: 1.25333333rem;
+  line-height: 0.93333333rem;
+  background: #0ad581;
+  border-radius: 10px;
+  font-size: 0.4rem;
+  letter-spacing: 16px;
+  color: #fff;
+  margin-left: 8%;
+  border: none;
+  outline: none;
+}
+.mainBox .loginBtn:active {
+  background: #19e18e;
+}
+.mainBox .threeLogin {
+  position: relative;
+  width: 84%;
+  margin: 1.70666667rem auto 0.93333333rem auto;
+}
+.mainBox .threeLogin .leftLabel,
+.mainBox .threeLogin .rightLabel {
+  width: 37.5%;
+  height: 0.05333333rem;
+  display: block;
+  float: left;
+  background: #b7d1f6;
+}
+.mainBox .threeLogin .centerTxt {
+  width: 25%;
+  float: left;
+  font-size: 0.29333333rem;
+  color: #b7d1f6;
+  margin-top: -0.14666667rem;
+  text-align: center;
+}
+.mainBox .weChat {
+  width: 1.04rem;
+  height: 1.04rem;
+  background: url(../img/wechat.png) no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}

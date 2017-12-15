@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/yuanChengNew.css" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+	</head>
+
+	<body>
+		<!--
+	数据实时传输，信息状态，一览无遗
+		智能化阀门远程控制和调度
+		实时监测，可持续利用和节约用水
+		监控水位、流量、压力以及设备情况
+		
+		高效实行执行开泵、关泵命令
+实时/定时监测流量自动报警
+	实时监测传感器压力值	
+	设备、压力、流量、报表、状态
+	实时水质监测、预警保障兴水
+	-->
+			<header class="mui-bar mui-bar-nav">
+		  	  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		  	  <h1 class="mui-title">远程监控列表</h1>
+			</header>
+		   <div class="mui-content" >
+		   		<div class="mui-scroll-wrapper sheBeiListWrap">
+		   			<div class="mui-scroll">
+		   				
+		   				<ul class="sheBeiList2 mui-clearfix">
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem bengFang" data-href="bengFangPage.html">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-bengfang"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">泵房</div>
+		   								<div class="itemDetail mui-ellipsis-2">数据实时传输，信息状态，一览无遗</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-famen1"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">阀门</div>
+		   								<div class="itemDetail mui-elipsis22">智能化阀门远程控制和调度</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-liuliang"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">流量</div>
+		   								<div class="itemDetail mui-elipsis22">实时监测，可持续利用和节约用水</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-shuichang"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">水厂</div>
+		   								<div class="itemDetail mui-elipsis2">监控水位、流量、压力以及设备情况</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-shuiyuan1"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">水源</div>
+		   								<div class="itemDetail mui-elipsis2">高效实行执行开泵、关泵命令</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-dabiao"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">大表</div>
+		   								<div class="itemDetail mui-elipsis2">实时/定时监测流量自动报警</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-yali"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">压力</div>
+		   								<div class="itemDetail mui-elipsis2">实时监测传感器压力值</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-tiaofeng"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">调峰</div>
+		   								<div class="itemDetail mui-elipsis2">设备、压力、流量、报表、状态</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   					<li class="mui-col-xs-12 mui-col-sm-6 sheBeiListItem">
+		   						<div class="itemMainBox mui-clearfix">
+		   							<div class="itemLeft">
+		   								<span class="iconfont icon-shuizhi"></span>
+		   							</div>
+		   							<div class="itemRight">
+		   								<div class="itemName">水质</div>
+		   								<div class="itemDetail mui-elipsis2">实时水质监测、预警保障兴水</div>
+		   							</div>
+		   						</div>
+		   						<div class="itemBorderBottom">
+		   							<div class="itemBorder"></div>
+		   						</div>
+		   					</li>
+		   				</ul>
+		   			
+		   			</div>
+		   		</div>
+		   </div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/echarts.min.js"></script>
+		<script>
+			mui.init({
+				//下拉刷新、上拉加载
+				pullRefresh:{
+					
+				},
+				//手势配置
+				gestureConfig:{
+					'popGesture': 'none'
+				},
+				//侧滑关闭
+				swipeBack:false,
+				//监听Android手机的back、menu按键
+				keyEventBind:{
+					backButton:false,
+					menubutton: false
+				},
+				//处理窗口关闭前的业务
+				beforeback:function(){},
+				
+				statusBarBackground: '#fff'
+			});
+			
+			
+			//主菜单的点击事件
+			mui('.gongNengList').on('tap', 'a', function() {
+				
+				var href = this.getAttribute("data-href");
+			
+				
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					
+					location.href = href;
+					return;
+				}else {
+					
+					
+				}
+
+
+			});
+			
+			if(mui.os.plus){
+					document.querySelector(".sheBeiList2 .bengFang").addEventListener("tap", function() {
+						$.ActionFn.selfFireFunction("bengFangPage", "preAct",'');
+						//alert(1);
+						$.ActionFn.selfOpenWindow("bengFangPage", "bengFangPage.html");
+					})
+					
+					
+				}
+			        
+			
+
+			
+			
+		</script>
+		
+	</body>
+
+</html>

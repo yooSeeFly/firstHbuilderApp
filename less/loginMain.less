@@ -1,0 +1,161 @@
+@placeholderColor: #fff;
+@Qin: 1rem/75;
+::-webkit-input-placeholder { /* WebKit browsers */
+
+　　color: @placeholderColor;
+     font-size: 20*@Qin;
+       height: 70*@Qin;
+       line-height: 40*@Qin;  
+　　}
+
+　　:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+　　color: @placeholderColor;
+   font-size: 20*@Qin;
+    height: 70*@Qin;
+       line-height: 40*@Qin;
+　　}
+
+　　::-moz-placeholder { /* Mozilla Firefox 19+ */
+   font-size: 20*@Qin;
+　　color: @placeholderColor;
+ height: 70*@Qin;
+       line-height: 40*@Qin;
+
+　　}
+
+　　:-ms-input-placeholder { /* Internet Explorer 10+ */
+
+　　color: @placeholderColor;
+   font-size: 20*@Qin;
+    
+          height: 70*@Qin;
+       line-height: 40*@Qin;
+　　}
+
+
+//////////////////////////
+body {
+    position: relative;
+    background: url(../img/bg.png) no-repeat;
+    background-size: cover;
+}
+.mainBox {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    padding-top: 72*@Qin;
+    .logoBox {
+        width: 177*@Qin;
+        height: 177*@Qin;
+        background: url(../img/logo.png) no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+    }
+    .logoText {
+        width: 100%;
+        height: 50*@Qin;
+        line-height: 50*@Qin;
+        font-size: 40*@Qin;
+        font-weight: normal;
+        text-align: center;
+        margin-top: 20*@Qin;
+        color: #fff;
+    }
+    .inputBox {
+        position: relative;
+        padding-top: 94*@Qin;
+        .infoBox {
+            position: relative;
+            width: 84%;
+            height: 94*@Qin;
+            line-height: 94*@Qin;
+            font-size: 20*@Qin;
+            background: rgba(255,255,255,.26);
+            border-radius: 10 px;
+            margin: 0 auto 60*@Qin auto;
+            
+            overflow: hidden;
+            .infoBg {
+                position: absolute;
+                z-index: 1;
+                &.userBg {
+                    left: 30*@Qin;
+                    top: 34*@Qin;
+                    width: 26*@Qin;
+                    height: 29*@Qin;
+                    background: url(../img/user.png) no-repeat;
+                    background-size: cover;
+                }
+                &.passwordBg {
+                     left: 30*@Qin;
+                    top: 34*@Qin;
+                    width: 26*@Qin;
+                    height: 31*@Qin;
+                    background: url(../img/password.png) no-repeat;
+                    background-size: cover;
+                }
+            }
+            input {
+                width: 100%;
+                height: 100%;
+                font-size: 28*@Qin;
+                color: #d6ebfb;
+                background: none!important;
+                letter-spacing: 3px;
+                word-spacing: 3px;
+                text-indent: 70*@Qin;
+            }
+        }
+    }
+    .loginBtn {
+        width: 84%;
+        height: 94*@Qin;
+        line-height: 70*@Qin;
+        background: #0ad581;
+        border-radius: 10px;
+        font-size: 30*@Qin;
+        letter-spacing: 16px;
+        color: #fff;
+        margin-left: 8%;
+        border: none;
+        outline: none;
+        &:active {
+            background: #19e18e;
+        }
+    }
+    .threeLogin {
+        position: relative;
+        width: 84%;
+        
+        margin: 128*@Qin auto 70*@Qin auto;
+        .leftLabel,.rightLabel {
+            width: 37.5%;
+            height: 4*@Qin;
+            display: block;
+            float: left;
+            background: #b7d1f6;
+        }
+        .centerTxt {
+            //position: absolute;
+            width: 25%;
+            float: left;
+            font-size: 22*@Qin;
+            color: #b7d1f6;
+            margin-top: -11*@Qin;
+            text-align: center;
+            
+        }
+        
+        
+    }
+    .weChat {
+        width: 78*@Qin;
+        height: 78*@Qin;
+        background: url(../img/wechat.png) no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+    }
+}
+

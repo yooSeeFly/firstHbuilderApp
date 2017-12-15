@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<link rel="stylesheet" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<link rel="stylesheet" href="css/bengFangSet.css" />
+		
+		
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">机组信息设置</h1>
+		</header>
+		<div class="mui-content sheBeiInfoWrap" id="jiZuInfWrap">
+			
+			<!--//设备  开关--> 
+		    <div class="sheBeiBox">
+		    	<div class="sheBeiTitle">
+		    		控制设备开关
+		    	</div>
+		    	<ul class="sheBeiListBox mui-clearfix sheBeiKaiGuan">
+		    		<li class="sheBeiItem" data-name="F41717">
+		    			<div class="menDengPic" :class="{'kai':currentJZCaiJiData.menDengData.F_szmb_m==1 }">
+							<span class="iconfont icon-men" ></span>
+						</div>
+						<div class="menDengTxt">门</div>
+		    		</li>
+		    		<li class="sheBeiItem" data-name="F41718">
+		    			<div class="menDengPic" :class="{'kai':currentJZCaiJiData.menDengData.F_szmb_d==1 }">
+							<span class="iconfont icon-deng"></span>
+						</div>
+						<div class="menDengTxt">灯</div>
+		    		</li>
+		    		<li class="sheBeiItem" data-name="F41719">
+		    			<div class="menDengPic" :class="{'kai':currentJZCaiJiData.menDengData.F_szmb_psb==1 }">
+							<span class="iconfont icon-paishuibeng"></span>
+						</div>
+						<div class="menDengTxt">排水泵</div>
+		    		</li>
+		    		<li class="sheBeiItem" data-name="F41720">
+		    			<div class="menDengPic" :class="{'kai':currentJZCaiJiData.menDengData.F_szmb_xdy==1 }">
+							<span class="iconfont icon-xiaoduyi"></span>
+						</div>
+						<div class="menDengTxt">消毒仪</div>
+		    		</li>
+		    		
+		    	</ul>
+		    </div>
+		    
+		    
+		    <!--// 设备命令-->
+		    
+		    <!--控制泵启停-->
+		    <div class="sheBeiControlBox bengKongZhi">
+		    	<div class="sheBeiControlTitle mui-clearfix bengQiTing" data-name="F41701">
+		    		<div class="titleLeft">
+		    			<div class="sheBeiControlPic"><span class="iconfont icon-bengfang"></span></div>
+		    			<div class="sheBeiControlTitle">控制泵启停</div>
+		    		</div>
+		    		<div class="sheBeiControlVal">
+		    			<a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    			<span class="sheBeiControlNum">{{currentJZCaiJiData.sheBeiData.F_szmb_sbjjqt |jinJIQiTing}}</span>
+		    		</div>
+		    	</div>
+		    	<ul class="sheBeiControlBody">
+		    		<li class="sheBeiControlItem mui-clearfix" v-for=" (val,key) in currentJZCaiJiData.sheBeiData.pumpQiTing" :data-name="val.commond">
+		    			<div class="sheBeiControlName">控制泵{{key+1}}</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">{{val.state |pumpQiTingState}}</span>
+		    			</div>
+		    		</li>
+		    		<!--<li class="sheBeiControlItem mui-clearfix">
+		    			<div class="sheBeiControlName">控制泵2</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">启动</span>
+		    			</div>
+		    		</li>
+		    		<li class="sheBeiControlItem mui-clearfix">
+		    			<div class="sheBeiControlName">控制泵3</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">启动</span>
+		    			</div>
+		    		</li>
+		    		<li class="sheBeiControlItem mui-clearfix">
+		    			<div class="sheBeiControlName">控制泵4</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">启动</span>
+		    			</div>
+		    		</li>-->
+		    		
+		    	</ul>
+		    </div>
+		    
+		    
+		    <!--设备设置-->
+		    <div class="sheBeiControlBox">
+		    	<div class="sheBeiControlTitle mui-clearfix">
+		    		<div class="titleLeft">
+		    			<div class="sheBeiControlPic"><span class="iconfont icon-bengfang"></span></div>
+		    			<div class="sheBeiControlTitle">设备设置</div>
+		    		</div>
+		    		
+		    	</div>
+		    	<ul class="sheBeiControlBody sheBeiSetCom">
+		    		<!--<li class="sheBeiControlItem mui-clearfix">
+		    			<div class="sheBeiControlName">采集间隔</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">0.12s</span>
+		    			</div>
+		    		</li>-->
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41713">
+		    			<div class="sheBeiControlName">定时切换</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum" v-cloak>{{currentJZCaiJiData.menDengData.F_szmb_dsqh}}</span>
+		    			</div>
+		    		</li>
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41702">
+		    			<div class="sheBeiControlName">出水压力</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum" v-cloak>{{currentJZCaiJiData.menDengData.F_szmb_csyl}}</span>
+		    			</div>
+		    		</li>
+		    		<!--<li class="sheBeiControlItem mui-clearfix">
+		    			<div class="sheBeiControlName">加泵延时</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">0.12s</span>
+		    			</div>
+		    		</li>-->
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41709">
+		    			<div class="sheBeiControlName">1#阀开度</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum" v-cloak>{{currentJZCaiJiData.menDengData.F_szmb_ddf1}}</span>
+		    			</div>
+		    		</li>
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41711">
+		    			<div class="sheBeiControlName">2#阀开度</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum" v-cloak>{{currentJZCaiJiData.menDengData.F_szmb_ddf2}}</span>
+		    			</div>
+		    		</li>
+		    	</ul>
+		    </div>
+		    
+		    <!--控制柜-->
+		     <div class="sheBeiControlBox">
+		    	<div class="sheBeiControlTitle mui-clearfix">
+		    		<div class="titleLeft">
+		    			<div class="sheBeiControlPic"><span class="iconfont icon-bengfang"></span></div>
+		    			<div class="sheBeiControlTitle">控制柜风扇</div>
+		    		</div>
+		    		
+		    	</div>
+		    	<ul class="sheBeiControlBody kongZhiGuiWenDu">
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41715" >
+		    			<div class="sheBeiControlName">启动温度</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">-</span>
+		    			</div>
+		    		</li>
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41716">
+		    			<div class="sheBeiControlName">停止温度</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">-</span>
+		    			</div>
+		    		</li>
+		    		
+		    	</ul>
+		    </div>
+		    
+		    <!--控制泵房风机-->
+		    <div class="sheBeiControlBox">
+		    	<div class="sheBeiControlTitle mui-clearfix fengShanQiTing" data-name="F41727" >
+		    		<div class="titleLeft">
+		    			<div class="sheBeiControlPic"><span class="iconfont icon-bengfang"></span></div>
+		    			<div class="sheBeiControlTitle">控制泵房风机</div>
+		    		</div>
+		    		
+		    		<div class="sheBeiControlVal">
+		    			<a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    			<span class="sheBeiControlNum">{{currentJZCaiJiData.menDengData.F_szmb_fswd |fengShanState}}</span>
+		    		</div>
+		    	</div>
+		    	<ul class="sheBeiControlBody kongZhiBengFangWenDu">
+		    		<li class="sheBeiControlItem mui-clearfix"  data-name="F41734">
+		    			<div class="sheBeiControlName">启动温度</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">-</span>
+		    			</div>
+		    		</li>
+		    		<li class="sheBeiControlItem mui-clearfix" data-name="F41735">
+		    			<div class="sheBeiControlName">停止温度</div>
+		    			<div class="sheBeiControlVal">
+		    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+		    				 <span class="sheBeiControlNum">-</span>
+		    			</div>
+		    		</li>
+		    		
+		    	</ul>
+		    </div>
+		    
+		    
+		    <!--运行时段方案-->
+		    <div class="yunXingShiDduan">
+		    	<div class="sheBeiControlBox">
+			    	<div class="sheBeiControlTitle mui-clearfix">
+			    		<div class="titleLeft">
+			    			<div class="sheBeiControlPic"><span class="iconfont icon-bengfang"></span></div>
+			    			<div class="sheBeiControlTitle">运行时段方案设置</div>
+			    		</div>
+			    		
+			    		<div class="sheBeiControlVal sheBeiControlBtn">
+			    			<a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+			    			<span class="sheBeiControlNum" v-cloak>{{fangAn}}</span>
+			    		</div>
+			    	</div>
+			    	
+			    	<div class="yunXingTxtBox">
+			    		-
+			    		<!--针对声场了到底是范德萨，阿斯顿发生地点，到底撒，的地方的说法都是，ad反倒是，阿森松岛-->
+			    	</div>
+			    </div> 
+		    </div>
+		    
+		    
+		     <!--限定设置-->
+		    <!--<div class="xianDingSheZhi">
+		    	<div class="sheBeiControlBox">
+			    	<div class="sheBeiControlTitle mui-clearfix">
+			    		<div class="titleLeft">
+			    			<div class="sheBeiControlPic"><span class="iconfont icon-bengfang"></span></div>
+			    			<div class="sheBeiControlTitle">限定设置</div>
+			    		</div>
+			    		
+			    		
+			    	</div>
+			    	
+			    	<ul class="sheBeiControlBody">
+			    		<li class="sheBeiControlItem mui-clearfix">
+			    			<div class="sheBeiControlName">进水压力(MPa)</div>
+			    			<div class="sheBeiControlVal mui-clearfix">
+			    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+			    				 <div class="xianXiaXian">
+			    				 	<span class="shangXian">上限:</span>
+			    					 <span class="sheBeiControlNum">0.12s</span>
+			    				 </div>
+			    				 <div class="xianXiaXian">
+			    				 	<span class="shangXian">下限:</span>
+			    				 	<span class="sheBeiControlNum">0.12s</span>
+			    				 </div>
+			    				 
+			    			</div>
+			    		</li>
+			    		<li class="sheBeiControlItem mui-clearfix">
+			    			<div class="sheBeiControlName">出水压力(MPa)</div>
+			    			<div class="sheBeiControlVal mui-clearfix">
+			    				 <a class=" mui-icon mui-icon mui-icon-forward mui-pull-right"></a>
+			    				 <div class="xianXiaXian">
+			    				 	<span class="shangXian">上限:</span>
+			    					 <span class="sheBeiControlNum">0.12s</span>
+			    				 </div>
+			    				 <div class="xianXiaXian">
+			    				 	<span class="shangXian">下限:</span>
+			    				 	<span class="sheBeiControlNum">0.12s</span>
+			    				 </div>
+			    				 
+			    			</div>
+			    		</li>
+			    		
+			    	</ul>
+			    </div> 
+		    </div>-->
+		    
+		</div>
+		
+		<div class="maskBox">
+			<div class="timerBox">5</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="js/VUE2.js"></script>
+		<script>
+			mui.init();
+			
+			mui.plusReady(function(){
+				
+				
+				var dtu=null,FSchemeID=null,commondTimer=null,commondOnoff=true,fangAnID=null;
+				Vue.filter('jinJIQiTing',function(val){
+				
+					if(val==2){
+						return '远程控制'
+					}else if(val==0) {
+						return '本地手动'
+					}else if(val==1){
+						return '本地自动'
+					}else if(val==3) {
+						return '远程急停'
+					}else {
+						return '-'
+					}
+				});
+				Vue.filter('fengShanState',function(val){
+					if(val==0){
+						return '本地手动关'
+					}else if(val==1) {
+						return '本地手动开'
+					}else if(val==2) {
+						return '本地自动关'
+					}else if(val==3) {
+						return '本地自动开'
+					}else if(val==4) {
+						return '远程关'
+					}else if(val==5) {
+						return '远程开'
+					}else {
+						return '-';
+					}
+				});
+				
+				Vue.filter('pumpQiTingState',function(val){
+					if(val==0){
+						return '无泵'
+					}else if(val==1) {
+						return '停止'
+					}else if(val==2){
+						return '运行'
+					}else if(val==3) {
+						return '故障'
+					}else {
+						return '停止'
+					}
+				})
+				var jzInfoSetVm=new Vue({
+					el:'#jiZuInfWrap',
+					data : {
+						currentJZCaiJiData:{
+							menDengData:{},
+							sheBeiData:{
+								pumpQiTing:[]
+							},
+							fangAnData:0
+						},
+						
+						
+					},
+					computed: {
+						fangAn: function(){
+							if(this.fangAnData==0) {
+								return '无分时方案';
+							}else if(this.fangAnData>0&&this.fangAnData<=10){
+								return '时段方案'+this.fangAnData;
+							}else {
+								return '无分时方案';
+							}
+						}
+					}
+				});
+				
+				
+				// 设置信息 初始 获取 函数 
+				function jzInfoSetGetFn(){
+					var currentJzId=jQuery.ActionFn.GetlocalStorage('currentJZId');
+					var pumpJZData=jQuery.ActionFn.GetlocalStorage('currentPumpInfo').data[0].pumpJZ;
+						
+							jQuery.each(pumpJZData,function(ind,val){
+								if(val.pumpJZID===currentJzId){
+//									console.log(JSON.stringify(jzDataDeal(pumpJZData[ind])));
+									jzInfoSetVm.$data.currentJZCaiJiData=jzDataDeal(pumpJZData[ind]);
+									dtu=pumpJZData[ind].DTUCode;
+									FSchemeID=pumpJZData[ind].FSchemeID;
+									fangAnID=pumpJZData[ind].D_Data[0]['F41725'];
+									
+//									alert(fangAnID);
+									yunXingFangAnFn(currentJzId,fangAnID);
+								}
+								;
+							});
+							
+						
+				}
+				
+				jzInfoSetGetFn();
+				
+				//运行时段方案 设置
+				
+				function yunXingFangAnFn(jzID,fangAnID){
+					var alermPra={
+						FName:$.ActionFn.GetlocalStorage("launchData").FName,
+						FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+						Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+						FType:"APP",
+						PumpJZID: jzID,
+						FangAnID: fangAnID
+					};
+				$.ActionFn.sendData_GetData_noLoading('/V_BFGL/GetPumpJZScheme',alermPra,yunXingCallback);
+					
+				}
+				
+				
+				//运行方案 回调 函数 
+				
+				function yunXingCallback(data){
+					console.log(JSON.stringify(data));
+					if(data.length){
+						jQuery('.yunXingTxtBox').html(data[0].Description);
+					}
+				}
+				
+				// 数据格式 处理函数
+				function jzDataDeal(data){
+					var menDengData={},fangAnData=null,sheBeiData={
+						pumpQiTing:[]
+					};
+						var pumpJZNum=0,pumpAux=0,pumpRun=0;
+					
+						pumpAux = data.Auxiliarypumpcount;
+//						alert(pumpAux);
+						//主泵数量
+					
+    					pumpRun = data.RunPumpNum;
+   						pumpJZNum = pumpAux + pumpRun;
+   						
+   						
+					    data=data.D_Data[0];
+						menDengData['F_szmb_m'] = data['F41093'];
+					    menDengData['F_szmb_d'] = data['F41097'];					  
+					    menDengData['F_szmb_psb'] = data['F41719'];
+					    menDengData['F_szmb_xdy'] = data['F41720'];
+					    
+					    
+					    menDengData['F_szmb_fswd'] = data['F41727'];//data['F41099'];
+					    menDengData['F_szmb_dsqh'] = data['F41713'];
+					    menDengData['F_szmb_csyl'] = data['F41141']; //F41702
+					    menDengData['F_szmb_ddf1'] = data['F41709'];
+					    menDengData['F_szmb_ddf2'] = data['F41711'];
+					    
+					    
+					    
+					    
+					    sheBeiData['F_szmb_sbjjqt'] = data['F41003'];	
+					    
+					    
+					    for(var i=0;i<pumpJZNum;i++){
+					    	if(8+i>=10){
+								var str=(8+i);
+								
+								
+							}else{
+								var str='0'+(8+i);
+							
+							}
+							sheBeiData.pumpQiTing.push({
+								'state': data['F410'+str],
+								'commond': 'F4170'+(3+i)
+								
+							
+							});
+					    	
+					    }
+					    
+//					    sheBeiData['F_szmb_kzbqt1'] = data['F41008'];
+//					    sheBeiData['F_szmb_kzbqt2'] = data['F41009'];
+//					    sheBeiData['F_szmb_kzbqt3'] = data['F41010'];
+//					    sheBeiData['F_szmb_kzbqt4'] = data['F41011'];
+//					    sheBeiData['F_szmb_kzbqt5'] = data['F41012'];
+//					    sheBeiData['F_szmb_kzbqt6'] = data['F41013'];
+					    
+					    
+					    
+					    //运行方案  
+					    
+					    fangAnData=data['F41108'];
+					    
+					   
+					return {
+						'menDengData':menDengData,
+						'sheBeiData':sheBeiData,
+						'fangAnData':fangAnData
+					}
+				}
+				
+				
+				//  设置 命令 下达 函数 
+				function jzCommondFn(name,txt){
+					
+					 if (!commondOnoff) {
+		                return;
+		            }
+		
+		
+		            clearInterval(commondTimer);
+		           
+           		    commondOnoff = false;
+           		    
+           		    
+					var commondPra={
+						FName:$.ActionFn.GetlocalStorage("launchData").FName,
+						FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").PassWord,
+						Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+						FType:"APP",
+						'Name': name,
+						'Text': txt,
+                        'Id':jQuery.ActionFn.GetlocalStorage('currentJZId'),
+                        'Type': 1,
+                        'Dtu': dtu,
+                        'FSchemeID': FSchemeID
+					};
+				
+				console.log(JSON.stringify(commondPra));
+					$.ActionFn.sendData_GetData('/V_YCJK/GetCommand',commondPra,commondCallbackFn);
+					
+				}
+				//
+				
+				//设置命令下达 回调函数
+				function commondCallbackFn(data){
+//					alert(1);
+					if (data.success) {
+						    $('.maskBox').css('display','block');
+                            mui.toast('命令下发'+data.msg);
+                             var time = 4;
+                             window.setTimeout(function(){
+                             	commondTimer = setInterval(function () {
+	                                if (time == -1) {
+	                                    clearInterval(commondTimer);
+	                                    //$TiaoFengKaiSet.animate(val);
+	                               		 $('.maskBox').css('display','none');
+	                               		 $('.maskBox>div').html(5);
+	                                    commondOnoff = true;
+	                                   
+	                                    return;
+	                                }
+	                                $('.maskBox>div').html( time );
+	                                console.log(time);
+	                                time--;
+	                            }, 1000);
+                             },300);
+                            
+
+                        } else {
+                            commondOnoff = true;
+                            mui.toast(data.msg);
+                        }
+				}
+//			本地制动 模式   选择 
+				document.querySelector('.bengQiTing').addEventListener('tap',function(){
+					var This=jQuery(this);
+					var btnArray = [{title:"本地自动"},{title:"远程控制"},{title:"远程急停"}];
+					plus.nativeUI.actionSheet( {
+//						title:'',
+						cancel:"取消",
+						buttons:btnArray
+					}, function(e){
+						var index = e.index;
+						var text = "你刚选择了";
+						switch (index){
+							case 0:
+								text += "取消";
+								break;
+							case 1:
+								text += btnArray[0].title;
+//								document.querySelector('.bengQiTing .sheBeiControlNum').innerHTML=btnArray[0].title;
+								
+								jzCommondFn(This.attr('data-name'),1);
+								break;
+							case 2:
+								text += btnArray[1].title;
+//								document.querySelector('.bengQiTing .sheBeiControlNum').innerHTML=btnArray[1].title;
+								jzCommondFn(This.attr('data-name'),2);
+								break;
+							case 3:
+								text += btnArray[2].title;
+//								document.querySelector('.bengQiTing .sheBeiControlNum').innerHTML=btnArray[2].title;
+								jzCommondFn(This.attr('data-name'),3);
+								break;
+						}
+//						mui.toast(text);
+						
+					} );
+				});
+				
+				
+				
+				//设备 开关 
+				
+				mui('.sheBeiKaiGuan').on('tap', 'li', function() {
+					var This=jQuery(this);
+					
+					var btnArray = [{title:"开"},{title:"关"}];
+					plus.nativeUI.actionSheet( {
+//						title:'',
+						cancel:"取消",
+						buttons:btnArray
+					}, function(e){
+						var index = e.index;
+						var text = "你刚选择了";
+						switch (index){
+							case 0:
+								text += "取消";
+								break;
+							case 1:
+								text += btnArray[0].title;
+								jzCommondFn(This.attr('data-name'),1);
+								break;
+							case 2:
+								text += btnArray[1].title;
+								jzCommondFn(This.attr('data-name'),2);
+								break;
+							
+						}
+//						mui.toast(text);
+
+					} );
+				});
+				
+				//本地泵的 启动停止
+				
+				jQuery('.bengKongZhi .sheBeiControlBody').on('tap', 'li', function() {
+					var This=jQuery(this);
+//					alert(This.attr('data-name'));
+					var btnArray = [{title:"启动"},{title:"停止"}];
+					plus.nativeUI.actionSheet( {
+//						title:'',
+						cancel:"取消",
+						buttons:btnArray
+					}, function(e){
+						var index = e.index;
+						var text = "你刚选择了";
+						switch (index){
+							case 0:
+								text += "取消";
+								break;
+							case 1:
+								text += btnArray[0].title;
+//								This.find('.sheBeiControlNum').html(btnArray[0].title);
+								jzCommondFn(This.attr('data-name'),1);
+								break;
+							case 2:
+								text += btnArray[1].title;
+//								This.find('.sheBeiControlNum').html(btnArray[1].title);
+								jzCommondFn(This.attr('data-name'),2);
+								break;
+							
+						}
+//						mui.toast(text);
+					} );
+				});
+				
+//				控制风机器启停
+				jQuery('body').on('tap','.fengShanQiTing',function(){
+					var This=jQuery(this);
+					var btnArray = [{title:"开启"},{title:"关闭"}];
+					plus.nativeUI.actionSheet( {
+//						title:'',
+						cancel:"取消",
+						buttons:btnArray
+					}, function(e){
+						var index = e.index;
+						var text = "你刚选择了";
+						switch (index){
+							case 0:
+								text += "取消";
+								break;
+							case 1:
+								text += btnArray[0].title;
+								jzCommondFn(This.attr('data-name'),1);
+								break;
+							case 2:
+								text += btnArray[1].title;
+								jzCommondFn(This.attr('data-name'),2);
+								break;
+							
+						}
+//						mui.toast(text);
+						
+					} );
+				});
+				
+				//本地设备设置
+				
+//				document.querySelector(".sheBeiSetCom").addEventListener('tap', function(e) {
+//					e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+//					var btnArray = ['取消', '确定'];
+//					mui.prompt('请输入的评语：', '性能好', 'Hello MUI', btnArray, function(e) {
+//						if (e.index == 1) {
+////							info.innerText = '谢谢你的评语：' + e.value;
+//						} else {
+////							info.innerText = '你点了取消按钮';
+//						}
+//					})
+//				})
+
+
+				jQuery('.sheBeiSetCom').on('tap', 'li', function(e) {
+					var This=jQuery(this);
+					var boxName=jQuery(this).find('.sheBeiControlName').html();
+					
+					
+//					e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+					var btnArray = ['取消', '确定'];
+					mui.prompt(boxName, '输入设定值','', btnArray, function(e) {
+						if (e.index == 1) {
+//							info.innerText = '谢谢你的评语：' + e.value;
+						jzCommondFn(This.attr('data-name'),e.value);
+						} else {
+//							info.innerText = '你点了取消按钮';
+							jzCommondFn(This.attr('data-name'),e.value);
+						}
+					})
+				});
+				
+				
+				
+//				控制柜风扇 的  温度 
+				
+				jQuery('.kongZhiGuiWenDu').on('tap', 'li', function(e) {
+					var This=jQuery(this);
+					var boxName=jQuery(this).find('.sheBeiControlName').html();
+					
+					
+//					e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+					var btnArray = ['取消', '确定'];
+					mui.prompt(boxName, '输入设定值','', btnArray, function(e) {
+						if (e.index == 1) {
+//							info.innerText = '谢谢你的评语：' + e.value;
+							if(e.value){
+								jzCommondFn(This.attr('data-name'),e.value);
+//								alert(e.value);
+							}
+							
+						} else {
+//							info.innerText = '你点了取消按钮';
+//							jzCommondFn(This.attr('data-name'),e.value);
+						}
+					})
+				});
+					//控制泵房风机 的  温度 
+				
+				jQuery('.kongZhiBengFangWenDu').on('tap', 'li', function(e) {
+					var This=jQuery(this);
+//					alert(This.attr('data-name'));
+					var boxName=jQuery(this).find('.sheBeiControlName').html();
+					
+					
+//					e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+					var btnArray = ['取消', '确定'];
+					mui.prompt(boxName, '输入设定值','', btnArray, function(e) {
+						if (e.index == 1) {
+							
+//							alert(1);
+//							info.innerText = '谢谢你的评语：' + e.value;
+							if(e.value){
+								jzCommondFn(This.attr('data-name'),e.value);
+							}
+						} else {
+//							info.innerText = '你点了取消按钮';
+//							jzCommondFn(This.attr('data-name'),e.value);
+						}
+					})
+				});
+				
+				//运行时段 方案 
+				
+				document.querySelector(".sheBeiControlBtn").addEventListener("tap", function() {
+						if(mui.os.plus){
+							$.ActionFn.selfOpenWindow("yunXingFangAn", "yunXingFangAn.html",'',true);
+						};
+						
+				})
+				
+				
+				//运行方案   带回值   
+				
+				window.addEventListener('yunXingFangAnID',function(e){
+					var fangAnId=e.detail.fangAnId;
+					jzCommondFn('F41725',fangAnId);
+//					alert(fangAnId);
+				})
+			
+			})
+			
+			
+		
+			
+			
+			
+		</script>
+	</body>
+</html>

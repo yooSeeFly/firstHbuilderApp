@@ -1,0 +1,220 @@
+@borderGray: #f2f1f1;
+@zhuLan: #5e8cf7;
+@zhuHong: #eb7642;
+
+@titleMarginL: 18px;
+
+
+.resetWrap {
+    width: 100%;
+    padding: 10px 0;
+    background: #fff;
+    margin-bottom: 10px;
+}
+body {
+  width: 100%;
+  height: 100%;
+    background: #f2f0f1;
+}
+
+.sheBeiBox {
+    margin-top: 10px;
+    .resetWrap; 
+    .sheBeiTitle {
+        font-size: 14px;
+        color: #999;
+        text-indent: @titleMarginL; 
+    }
+    .sheBeiListBox {
+        width:100%;
+        margin-top: 20px;
+        >li {
+            width: 20%;
+            text-align: center;
+            font-size: 14px;
+            color: #333333;
+            float: left;
+            .menDengPic {
+                width: 44px;
+                height: 44px;
+                line-height: 44px;
+                border-radius: 50%;
+                margin: 0 auto;
+                background: #d8d8d8;
+                &.kai {
+                    background: #5e8cf7;
+                }
+                span {
+                    font-size: 34px;
+                    color: #fff;
+//                  &.kai {
+//                      color: #eb7642;
+//                  }
+                }
+            }
+        }
+    }
+}
+
+
+
+.sheBeiControlBox {
+    .resetWrap;
+    .sheBeiControlTitle {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid @borderGray;
+        font-size: 14px;
+        .titleLeft {
+                width: 50%;
+                height: 40px;
+                float: left;
+                line-height: 40px;
+            .sheBeiControlPic {
+                float: left;
+                width: 20px;
+                height: 20px;
+                line-height: 18px;
+                text-align: center;
+                border: 1px solid #35064c;
+                border-radius: 50%;
+                margin-top: 11px;
+                margin-left: @titleMarginL;
+                margin-right: 8px;
+                span {
+                    color: #414141;
+                    font-size: 16px;
+                }
+            }
+        }
+        
+        .sheBeiControlVal {
+                width: 48%;
+                padding-right: 2%;
+                height: 40px;
+                float: right;
+                line-height: 40px;
+                text-align: right;
+               color: #999;
+               font-size: 12px;
+                a {
+                    margin-top: 10px;
+                    color: #bcbcbc;
+                }
+            }
+    }
+    .sheBeiControlBody {
+        width: 96%;
+        margin-left: 2%;
+        >li {
+            width: 100%;
+            height: 44px;
+            line-heihgt: 44px;
+            border-bottom: 1px solid @borderGray;
+            font-size: 12px;
+            .sheBeiControlName {
+                width: 50%;
+                heihgt: 44px;
+                line-height: 44px;
+                float: left;
+               text-indent: 40px;
+            }
+            .sheBeiControlVal {
+                width: 50%;
+                height: 44px;
+                float: right;
+                line-height: 44px;
+                text-align: right;
+               color: #999;
+                a {
+                    margin-top: 10px;
+                    color: #bcbcbc;
+                }
+            }
+        }
+    }
+}
+
+
+
+//运行时段
+.yunXingShiDduan {
+    width: 100%;
+    .yunXingTxtBox {
+          
+          margin: 10px 20px 0 30px;
+          font-size: 12px;
+          line-height: 14px;
+          color: #999;
+    }
+}
+
+
+//限定设置
+
+.xianDingSheZhi {
+  width: 100%;
+  .sheBeiControlBody {
+    width: 96%;
+    margin-left: 2%;
+    >li {
+        width: 100%;
+        height: 44px;
+        line-heihgt: 44px;
+        border-bottom: 1px solid @borderGray;
+        font-size: 12px;
+        .sheBeiControlName {
+            width: 40%;
+            heihgt: 44px;
+            line-height: 44px;
+            float: left;
+           text-indent: 40px;
+        }
+        .sheBeiControlVal {
+            width: 60%;
+            height: 44px;
+            float: right;
+            line-height: 44px;
+//         text-align: left;
+            color: #999;
+            .xianXiaXian {
+                width: 42%;
+                float: left;
+                .sheBeiControlNum {
+                  color: #608cf9;
+                }
+               
+            }
+            a {
+                margin-top: 10px;
+                color: #bcbcbc;
+            }
+        }
+    }
+  }  
+}
+
+
+.maskBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(0,0,0,0.2);
+   
+    font-size: 120px;
+    display: none;
+    >div {
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        top: 50%;
+        text-align: center;
+    }
+}

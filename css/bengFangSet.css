@@ -1,0 +1,196 @@
+.resetWrap {
+  width: 100%;
+  padding: 10px 0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background: #f2f0f1;
+}
+.sheBeiBox {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.sheBeiBox .sheBeiTitle {
+  font-size: 14px;
+  color: #999;
+  text-indent: 18px;
+}
+.sheBeiBox .sheBeiListBox {
+  width: 100%;
+  margin-top: 20px;
+}
+.sheBeiBox .sheBeiListBox > li {
+  width: 20%;
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+  float: left;
+}
+.sheBeiBox .sheBeiListBox > li .menDengPic {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: #d8d8d8;
+}
+.sheBeiBox .sheBeiListBox > li .menDengPic.kai {
+  background: #5e8cf7;
+}
+.sheBeiBox .sheBeiListBox > li .menDengPic span {
+  font-size: 34px;
+  color: #fff;
+}
+.sheBeiControlBox {
+  width: 100%;
+  padding: 10px 0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.sheBeiControlBox .sheBeiControlTitle {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #f2f1f1;
+  font-size: 14px;
+}
+.sheBeiControlBox .sheBeiControlTitle .titleLeft {
+  width: 50%;
+  height: 40px;
+  float: left;
+  line-height: 40px;
+}
+.sheBeiControlBox .sheBeiControlTitle .titleLeft .sheBeiControlPic {
+  float: left;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  border: 1px solid #35064c;
+  border-radius: 50%;
+  margin-top: 11px;
+  margin-left: 18px;
+  margin-right: 8px;
+}
+.sheBeiControlBox .sheBeiControlTitle .titleLeft .sheBeiControlPic span {
+  color: #414141;
+  font-size: 16px;
+}
+.sheBeiControlBox .sheBeiControlTitle .sheBeiControlVal {
+  width: 48%;
+  padding-right: 2%;
+  height: 40px;
+  float: right;
+  line-height: 40px;
+  text-align: right;
+  color: #999;
+  font-size: 12px;
+}
+.sheBeiControlBox .sheBeiControlTitle .sheBeiControlVal a {
+  margin-top: 10px;
+  color: #bcbcbc;
+}
+.sheBeiControlBox .sheBeiControlBody {
+  width: 96%;
+  margin-left: 2%;
+}
+.sheBeiControlBox .sheBeiControlBody > li {
+  width: 100%;
+  height: 44px;
+  line-heihgt: 44px;
+  border-bottom: 1px solid #f2f1f1;
+  font-size: 12px;
+}
+.sheBeiControlBox .sheBeiControlBody > li .sheBeiControlName {
+  width: 50%;
+  heihgt: 44px;
+  line-height: 44px;
+  float: left;
+  text-indent: 40px;
+}
+.sheBeiControlBox .sheBeiControlBody > li .sheBeiControlVal {
+  width: 50%;
+  height: 44px;
+  float: right;
+  line-height: 44px;
+  text-align: right;
+  color: #999;
+}
+.sheBeiControlBox .sheBeiControlBody > li .sheBeiControlVal a {
+  margin-top: 10px;
+  color: #bcbcbc;
+}
+.yunXingShiDduan {
+  width: 100%;
+}
+.yunXingShiDduan .yunXingTxtBox {
+  margin: 10px 20px 0 30px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #999;
+}
+.xianDingSheZhi {
+  width: 100%;
+}
+.xianDingSheZhi .sheBeiControlBody {
+  width: 96%;
+  margin-left: 2%;
+}
+.xianDingSheZhi .sheBeiControlBody > li {
+  width: 100%;
+  height: 44px;
+  line-heihgt: 44px;
+  border-bottom: 1px solid #f2f1f1;
+  font-size: 12px;
+}
+.xianDingSheZhi .sheBeiControlBody > li .sheBeiControlName {
+  width: 40%;
+  heihgt: 44px;
+  line-height: 44px;
+  float: left;
+  text-indent: 40px;
+}
+.xianDingSheZhi .sheBeiControlBody > li .sheBeiControlVal {
+  width: 60%;
+  height: 44px;
+  float: right;
+  line-height: 44px;
+  color: #999;
+}
+.xianDingSheZhi .sheBeiControlBody > li .sheBeiControlVal .xianXiaXian {
+  width: 42%;
+  float: left;
+}
+.xianDingSheZhi .sheBeiControlBody > li .sheBeiControlVal .xianXiaXian .sheBeiControlNum {
+  color: #608cf9;
+}
+.xianDingSheZhi .sheBeiControlBody > li .sheBeiControlVal a {
+  margin-top: 10px;
+  color: #bcbcbc;
+}
+.maskBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 120px;
+  display: none;
+}
+.maskBox > div {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  top: 50%;
+  text-align: center;
+}

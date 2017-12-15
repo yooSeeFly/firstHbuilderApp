@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>泵房监控首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/icons-extra.css" />
+		<link rel="stylesheet" href="css/warnDetail.css" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<style>
+			[v-cloak]{
+			    display: none;
+			}
+		</style>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">报警详情</h1>
+		</header>
+		<div class="mui-content">
+			
+		    <div class="warnDetailWrap" id="warnDetail">
+		    	
+		    	<ul class="noData" v-show="warnList.length==0">
+		    		<li></li>
+		    		<li></li>
+		    		<li></li>
+		    		<li></li>
+		    	</ul>
+		    	<div class="noDataTip" v-show="warnList.length==0">
+		    		无报警记录
+		    	</div>
+		    	
+		    	<ul class="warnListWrap">
+		    		<li v-for="item in warnList" v-show="item.length>0">
+		    			<div class="typePicBox mui-clearfix">
+		    				<div class="typePic">
+		    					<span class="iconfont " v-bind:class="[item.mType]"></span>
+		    				</div>
+		    				<div class="typeName" v-cloak>{{item.name}}</div>
+		    			</div>
+		    			
+		    			<ul class="warnList">
+		    				<li class="warnItem" v-for="sub in item.dataSubItem">
+		    					<div class="dot"></div>
+		    					<div class="warnTime" v-cloak>{{sub.date |timeDeal}}</div>
+		    					<div class="warnName" v-cloak>{{sub.name}}</div>
+		    					<div class="warnText" v-cloak>{{sub.msg}}</div>
+		    					<!--<div class="beforeTime" v-cloak>{{sub.beforeTime}}</div>-->
+		    				</li>
+		    				
+		    			</ul>
+		    		</li>
+		    		
+		    		
+		    	</ul>
+		  
+		    
+		    </div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/VUE2.js"></script>
+		<script type="text/javascript">
+			
+		
+				
+					mui.init({
+					//下拉刷新、上拉加载
+					pullRefresh:{
+						
+					},
+					//手势配置
+					gestureConfig:{
+						'popGesture': 'none'
+					},
+					//侧滑关闭
+					swipeBack:false,
+					//监听Android手机的back、menu按键
+					keyEventBind:{
+						backButton:false,
+						menubutton: false
+					}
+				});
+				
+				
+			mui.plusReady(function(){
+				
+			jQuery.ActionFn.showLoading();
+			
+			var firstGetData=true;
+			Vue.filter('timeDeal',function(value){
+				if(!value){
+					return '';
+					
+				}else {
+					return value.replace(/[a-z]/ig,' ');
+				}
+			});
+			var vm=new Vue({
+					el:'#warnDetail',
+					data:{
+						warnList:[
+//							{
+//								name:'泵房',
+//								mType:'',
+//								length:0,
+//								dataSubItem:[
+//									{
+//										date:'1',
+//										name:'2',
+//										msg:'2',
+//										beforeTime:'3'
+//									},
+//									{
+//										date:'1',
+//										name:'2',
+//										msg:'2',
+//										beforeTime:'3'
+//									},
+//								]
+//							}
+						]
+					},
+					
+				});
+			
+//			console.log(dataDealFn(data));
+			
+//				console.log(vm.warnListData);
+				
+				//数据获取 函数
+			function dataGetFn(){
+				var alermPra={
+					FName:$.ActionFn.GetlocalStorage("launchData").FName,
+				    FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+					Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+					FType:"APP"
+				};
+//				$.ajax({
+//					url:'http://192.168.1.97:8008/V_YCJK/ALLAlarm_List',
+//					type:'POST',
+//					dataType:'json',
+//					data:alermPra,
+//					success:function(data){
+//						//	warnListCallback(data);
+//						console.log(data.data);
+//						
+//							vm.warnList=dataDealFn(data.data);
+//						
+//						
+////						setInterval(function(){ 
+////							
+////							(vm.warnList[0].dataSubItem).pop();
+////							(vm.warnList).pop();
+////							console.log((vm.warnList).length);
+////						},2000*2);
+//						
+//					},
+//					error: function(data){
+//						console.log(data);
+//					}
+//				});
+				
+				$.ActionFn.sendData_GetData_noLoading('/V_YCJK/ALLAlarm_List',alermPra,warnListCallback);
+				
+				
+				function warnListCallback(data){
+					
+					if(firstGetData){
+						jQuery.ActionFn.closeLoading();
+						firstGetData=false;
+					}
+					vm.warnList=dataDealFn(data.data);
+				}
+			}
+			//数据 处理 函数
+			
+			
+			dataGetFn();
+			
+			window.setInterval(function(){
+				dataGetFn();
+			},1000*60);
+		
+			function dataDealFn(data){
+				var warnListData=[
+					{
+						name:'泵房',
+						mType:'icon-bengfang',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'阀门',
+						mType:'icon-famen1',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'流量',
+						mType:'icon-liuliang',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'水厂',
+						mType:'icon-shuichang',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'水源',
+						mType:'icon-shuiyuan1',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'大表',
+						mType:'icon-dabiao',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'压力',
+						mType:'icon-yali',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'调峰',
+						mType:'icon-tiaofeng',
+						length:0,
+						dataSubItem:[]
+					},
+					{
+						name:'水质',
+						mType:'icon-shuizhi',
+						length:0,
+						dataSubItem:[]
+					}
+				];
+//				var dataItem={
+//						dataSubItem:[]
+//					};
+
+				$(data).each(function(ind,val){
+//					var dataItem={
+//						dataSubItem:[]
+//					};
+//					console.log(val.FMarkerType);
+					switch(val.FMarkerType){
+						case 1 :{
+//							dataItem.name='泵房';
+							warnListData[0].length+=1;
+							warnListData[0].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							break;
+						}
+						case 2 :{
+//							dataItem.name='阀门';
+
+							warnListData[1].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[1].length=warnListData[1].dataSubItem.length;
+							break;
+						}
+						case 3 :{
+//							dataItem.name='流量';
+
+							warnListData[2].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[2].length=warnListData[2].dataSubItem.length;
+							break;
+						}
+						case 4 :{
+//							dataItem.name='水厂';
+
+							warnListData[3].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[3].length=warnListData[3].dataSubItem.length;
+							break;
+						}
+						case 5 :{
+//							dataItem.name='水源';
+
+							warnListData[4].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[4].length=warnListData[4].dataSubItem.length;
+							break;
+						}
+						case 6 :{
+//							dataItem.name='大表';
+
+							warnListData[5].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[5].length=warnListData[5].dataSubItem.length;
+							break;
+						}
+						case 7 :{
+//							dataItem.name='压力';
+
+							warnListData[6].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[6].length=warnListData[6].dataSubItem.length;
+							break;
+						}
+						case 8 :{
+//							dataItem.name='调峰';
+
+							warnListData[7].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[7].length=warnListData[7].dataSubItem.length;
+							break;
+						}
+						case 9 :{
+//							dataItem.name='水质';
+
+							warnListData[8].dataSubItem.push({
+								date:val.FAlarmTime,
+								name:val.FName,
+								msg:val.FSetMsg,
+								beforeTime:val.ParamID
+							});
+							warnListData[8].length=warnListData[8].dataSubItem.length;
+							break;
+						}
+					}
+					
+					//warnListData.push(dataItem);
+				});
+				
+				return warnListData;
+				
+			}
+	
+			});
+			
+			
+			
+	</script>
+	</body>
+
+</html>
+
+
+

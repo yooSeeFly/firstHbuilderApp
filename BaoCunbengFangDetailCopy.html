@@ -1,0 +1,866 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>泵房监控首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--<link rel="stylesheet" href="css/reset.css" />-->
+		
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="css/mui.picker.css" />
+		<link rel="stylesheet" href="css/mui.poppicker.css" />
+		<link rel="stylesheet" href="css/pumpDetail.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="detailHeader" id="dataWrap">
+			<a class="headerArrow mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="headerArrow mui-icon mui-icon mui-icon-more mui-pull-right"></a>
+			<div class="detailPumpName">上海熊猫宿舍</div>
+			<a class="areaSlect mui-btn " id="showUserPicker" ><span class="pickerName"></span> <span class="mui-icon mui-icon-arrowdown"></span></a>
+			<div class="pumpPicBox"></div>
+			<div class="adressTime clearfix">
+				<div class="adressBox"><span class="iconfont">1</span>{{jiChuInfo.address}}</div>
+				<div class="timeBox"><span class="iconfont"></span>{{jiChuInfo.caiJiTime}}</div>
+			</div>
+			
+		</div>
+		
+		
+		<button type="button" class="caiJiButton">采<br />集</button>
+		
+		
+		<div class="setBox">
+			<span class="mui-icon mui-icon-gear"></span>
+		</div>
+		<!--<div class="dataItemBox">
+			<ul class="dataItemList">
+				<li class="dataItemListItem">实时数据</li>
+				<li class="dataItemListItem">机组信息</li>
+				<li class="dataItemListItem">数据报表</li>
+				<li class="dataItemListItem">预警报警</li>
+				<li class="dataItemListItem">数据报表</li>
+				<li class="dataItemListItem">预警报警</li>
+			</ul>
+		</div>-->
+		<div id="slider" class="mui-slider dataItemSliderBox">
+				
+			
+				
+		
+			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll dataItemSlider">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							实时数据
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							机组信息
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+							数据报表
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+							预警报警
+						</a>
+						
+					</div>
+				</div>
+				
+				
+				<div class="dataItemSliderGroup">
+					<div class="currentDataBox">
+						<ul class="gongNengList mui-table-view mui-grid-view mui-grid-9">
+						    <li class="mui-table-view-cell mui-media mui-col-xs-4">
+						    	<a href="#">                     
+						           <p class="allLiu">总流量</p>                                   
+						           <div class="mui-media-body "><span class="liuNum">8925.12</span>m³</div>    
+						    	</a>                                            
+						    </li>                                               
+						    <li class="mui-table-view-cell mui-media mui-col-xs-4">
+						    	<a href="#">                     
+						           <p class="allLiu">总电量</p>                                   
+						           <div class="mui-media-body "><span class="liuNum">8925.12</span>Kw/h</div>    
+						    	</a>                                            
+						    </li>                                               
+						    <li class="mui-table-view-cell mui-media mui-col-xs-4">
+						    	<a href="#">                     
+						           <p class="allLiu">变频器频率</p>                                   
+						           <div class="mui-media-body liuNumBox"><span class="liuNum">8925.12</span>Hz</div>    
+						    	</a> 
+						    </li>
+						</ul> 
+					
+					
+					<!--采集 box-->
+						<!--<div class="caiJiSetBox clearfix">
+							<div class="caiJiSetTxt clearfix">
+								<div class="caiJiBoxImg"></div>
+								<div class="caiJiBoxTxt">各数据操作</div>
+							</div>
+							<div class="buttonBox">
+								<button class="mui-btn">采集</button>
+								<button class="mui-btn">设置</button>
+								<div class="qieHuanBtnBox">
+									<div class=" qieHuanBtn mui-switch mui-switch-blue mui-switch-mini mui-active">
+										<div class="mui-switch-handle"></div>
+									</div>
+								</div>
+										
+							</div>
+							
+						</div>
+						-->
+						
+						<div class="caiJiInfoBox" id="caiJiInfoWrap">
+							
+							<!--变频器模块-->
+								<div class="bianPinBox" v-for="">
+									<div class="bianPinHead">
+										<div class="bianPinLine">
+											<span class="bianPinTxt">&变频器&</span>
+										</div>
+									</div>
+									<ul class="bianPinBody clearfix">
+										<li class="bianPinItem">
+											<div class="bianPinName">运行时间</div>
+											<div class="bianPinNumBox"><span class="bianPinNum" v-cloak>{{}} </span>s</div>
+										</li>
+										<li class="bianPinItem">
+											<div class="bianPinName">运行频率</div>
+											<div class="bianPinNumBox"><span class="bianPinNum" v-cloak>{{}} </span>s</div>
+										</li>
+										<li class="bianPinItem">
+											<div class="bianPinName">直流电压</div>
+											<div class="bianPinNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+										<li class="bianPinItem">
+											<div class="bianPinName">输出电压</div>
+											<div class="bianPinNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+										<li class="bianPinItem">
+											<div class="bianPinName">温度</div>
+											<div class="bianPinNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+									</ul>
+								</div>
+								
+								<!--流量值模块-->
+								<div class="liuLiangBox">
+									<div class="liuLiangHead">
+										<div class="liuLiangLine">
+											<span class="liuLiangTxt">&流量值&</span>
+										</div>
+									</div>
+									<ul class="liuLiangBody clearfix">
+										<li class="liuLiangItem">
+											<div class="liuLiangName">进瞬时流量</div>
+											<div class="liuLiangNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+										<li class="liuLiangItem">
+											<div class="liuLiangName">出瞬时流量</div>
+											<div class="liuLiangNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+										<li class="liuLiangItem">
+											<div class="liuLiangName">进累计流量</div>
+											<div class="liuLiangNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+										<li class="liuLiangItem">
+											<div class="liuLiangName">出累计流量</div>
+											<div class="liuLiangNumBox"><span class="bianPinNum">120 </span>s</div>
+										</li>
+									</ul>
+								</div>
+								
+							
+							<!--门等模块-->
+								<div class="menDengBox">
+									<ul	 class="menDeng mui-row">
+										<li class="menDengItem mui-col-xs-2">
+											<div class="menDengPic">
+												<span class="iconfont icon-men"></span>
+											</div>
+											<div class="menDengTxt">门</div>
+										</li>
+										<li class="menDengItem mui-col-xs-2">
+											<div class="menDengPic">
+												<span class="iconfont icon-deng"></span>
+											</div>
+											<div class="menDengTxt">灯</div>
+										</li>
+										<li class="menDengItem mui-col-xs-2">
+											<div class="menDengPic">
+												<span class="iconfont icon-dianyuan"></span>
+											</div>
+											<div class="menDengTxt">电源</div>
+										</li>
+										<li class="menDengItem mui-col-xs-2">
+											<div class="menDengPic">
+												<span class="iconfont icon-pochuang"></span>
+											</div>
+											<div class="menDengTxt">破窗</div>
+										</li>
+										<li class="menDengItem mui-col-xs-2">
+											<div class="menDengPic">
+												<span class="iconfont icon-UPS"></span>
+											</div>
+											<div class="menDengTxt">USP</div>
+										</li>
+										<li class="menDengItem mui-col-xs-2">
+											<div class="menDengPic">
+												<span class="iconfont icon-loushui "></span>
+											</div>
+											<div class="menDengTxt">漏水</div>
+										</li>
+									</ul>
+								</div>
+								
+								<!--余浊模块-->
+								<div class="yuZhuoBox">
+									<ul	 class="yuZhuo mui-row">
+										<li class="yuZhuoItem mui-col-xs-2">
+											<div class="yuZhuoPic">
+												<span class="iconfont icon-yulv"></span>
+											</div>
+											<div class="yuZhuoTxt">余氯</div>
+											<div class="yuZhuoNum">0.12</div>
+										</li>
+										<li class="yuZhuoItem mui-col-xs-2">
+											<div class="yuZhuoPic">
+												<span class="iconfont icon-zhuodu"></span>
+											</div>
+											<div class="yuZhuoTxt">浊度</div>
+											<div class="yuZhuoNum">0.12</div>
+										</li>
+										<li class="yuZhuoItem mui-col-xs-2">
+											<div class="yuZhuoPic">
+												<span class="iconfont icon-PHzhi"></span>
+											</div>
+											<div class="yuZhuoTxt">PH</div>
+											<div class="yuZhuoNum">0.12</div>
+										</li>
+										<li class="yuZhuoItem mui-col-xs-2">
+											<div class="yuZhuoPic">
+												<span class="iconfont icon-shuiwen"></span>
+											</div>
+											<div class="yuZhuoTxt">水温</div>
+											<div class="yuZhuoNum">0.12</div>
+										</li>
+										<li class="yuZhuoItem mui-col-xs-2">
+											<div class="yuZhuoPic">
+												<span class="iconfont icon-rongjieyang"></span>
+											</div>
+											<div class="yuZhuoTxt">溶解氧</div>
+											<div class="yuZhuoNum">0.12</div>
+										</li>
+										<li class="yuZhuoItem mui-col-xs-2">
+											<div class="yuZhuoPic">
+												<span class="iconfont icon-wendu"></span>
+											</div>
+											<div class="yuZhuoTxt">温度</div>
+											<div class="yuZhuoNum">0.12</div>
+										</li>
+										
+									</ul>
+								</div>	
+								
+							
+							     <!--电动阀 开度模块-->
+							    <div class="kaiDuBox">
+							    	<div class="kaiDuTitleBox mui-clearfix">
+							    		<div class="kaiDuTitlePic">
+							    			<span class="iconfont icon-bengfang"></span>
+							    		</div>
+							    		<div class="kaiDuTitleTxt">电动阀开度</div>
+							    	</div>
+							    	<ul class="kaiduItemBox">
+							    		<li class="kaiDuItem mui-clearfix">
+							    			<div class="kaiDuItemName">
+							    				<span class="kaiDuItemNamePic"></span>1#电动阀开度：
+							    			</div>
+							    			<div class="kaiDuItemNum">0.43</div>
+							    		</li>
+							    	</ul>
+							    </div>
+							     <!--水箱模块-->
+							    <div class="shuiXiangBox">
+							    	<div class="shuiXiangTitleBox mui-clearfix">
+							    		<div class="shuiXiangTitlePic">
+							    			<span class="iconfont icon-bengfang"></span>
+							    		</div>
+							    		<div class="shuiXiangTitleTxt">水箱液位</div>
+							    	</div>
+							    	<ul class="shuiXiangItemBox">
+							    		<li class="shuiXiangItem mui-clearfix">
+							    			<div class="shuiXiangItemName">
+							    				<span class="shuiXiangItemNamePic"></span>1#水箱液位：
+							    			</div>
+							    			<div class="shuiXiangItemNum">0.43</div>
+							    		</li>
+							    	</ul>
+							    </div>
+							    
+							    <!--泵状态模块-->
+							    <div class="bengStateBox">
+							    	<div class="bengStateHead">
+										<div class="bengStateLine">
+											<span class="bengStateTxt">&泵状态&</span>
+										</div>
+									</div>
+									
+									<ul class="bengStateTitle clearfix">
+										<li class="bengStateTitleItem">
+											<div class="bengStateTitleName">泵号</div>
+											
+										</li>
+										<li class="bengStateTitleItem">
+											<div class="bengStateTitleName">运行状态</div>
+											
+										</li>
+										<li class="bengStateTitleItem">
+											<div class="bengStateTitleName">运行电流</div>
+											
+										</li>
+										<li class="bengStateTitleItem">
+											<div class="bengStateTitleName">运行时间</div>
+											
+										</li>
+										
+									</ul>
+									<ul class="bengStateBody">
+										<li class="bengStateItem mui-clearfix">
+											<div class="bengStateName">1#</div>
+											<div class="bengStatePic"><span class="iconfont icon-bengfang"></span></div>
+											<div class="bengStateNum">0.23</div>
+											<div class="bengStateTime">2017-12-12 12:12:12</div>
+											
+										</li>
+									</ul>
+							    </div>
+							    
+							    <!--Ua Ic  模块-->
+							    <div class="uaIcBox">
+									<ul	 class="uaIc mui-row">
+										<li class="uaIcItem mui-col-xs-2">
+											<div class="uaIcPic">
+												1.68
+											</div>
+											<div class="uaIcTxt">Ua电压</div>
+										</li>
+										<li class="uaIcItem mui-col-xs-2">
+											<div class="uaIcPic">
+												1.68
+											</div>
+											<div class="uaIcTxt">Ub电压</div>
+										</li>
+										<li class="uaIcItem mui-col-xs-2">
+											<div class="uaIcPic">
+												1.68
+											</div>
+											<div class="uaIcTxt">Uc电压</div>
+										</li>
+										<li class="uaIcItem mui-col-xs-2">
+											<div class="uaIcPic">
+												1.68
+											</div>
+											<div class="uaIcTxt">Ia电流</div>
+										</li>
+										<li class="uaIcItem mui-col-xs-2">
+											<div class="uaIcPic">
+												1.68
+											</div>
+											<div class="uaIcTxt">Ib电流</div>
+										</li>
+										<li class="uaIcItem mui-col-xs-2">
+											<div class="uaIcPic">
+												1.68
+											</div>
+											<div class="uaIcTxt">Ic电流</div>
+										</li>
+										
+									</ul>
+								</div>
+							<!--控制模组-->
+							<div class="kongZhiBox active">
+								
+								<!--控制 采集时间等的模块-->
+								<!--<ul class="kongZhiJianDing clearfix">
+									<li class="kongZhiJianDingItem">
+										<span class="kongZhiJianDingItemTxt">
+											采集间隔:
+										</span>
+										<span class="kongZhiJianDingItemNum">0.24</span>
+										<button class="kongZhiJianDingItemSet mui-pull-right">设置</button>
+									</li>
+									<li class="kongZhiJianDingItem">
+										<span class="kongZhiJianDingItemTxt">
+											出水压力:
+										</span>
+										<span class="kongZhiJianDingItemNum">0.24</span>
+										<button class="kongZhiJianDingItemSet mui-pull-right">设置</button>
+									</li>
+									<li class="kongZhiJianDingItem">
+										<span class="kongZhiJianDingItemTxt">
+											定时切换:
+										</span>
+										<span class="kongZhiJianDingItemNum">0.24</span>
+										<button class="kongZhiJianDingItemSet mui-pull-right">设置</button>
+									</li>
+									<li class="kongZhiJianDingItem">
+										<span class="kongZhiJianDingItemTxt">
+											电动阀:
+										</span>
+										<span class="kongZhiJianDingItemNum">0.24</span>
+										<button class="kongZhiJianDingItemSet mui-pull-right">设置</button>
+									</li>
+								</ul>-->
+								
+								<!--设备状态 模块-->
+								<!--<ul class="sheBeiStatusBox clearfix">
+									<li class="sheBeiStatusItem">
+										<img class="sheBeiStatusItemPic show" src="images/1.png" alt="" />
+										<img class="sheBeiStatusItemPic" src="images/1.png" alt="" />
+										<div class="sheBeiStatusItemTxt">排水泵</div>
+									</li>
+									<li class="sheBeiStatusItem">
+										<img class="sheBeiStatusItemPic show" src="images/1.png" alt="" />
+										<img class="sheBeiStatusItemPic" src="images/1.png" alt="" />
+										<div class="sheBeiStatusItemTxt">灯关</div>
+									</li>
+									<li class="sheBeiStatusItem">
+										<img class="sheBeiStatusItemPic show" src="images/1.png" alt="" />
+										<img class="sheBeiStatusItemPic" src="images/1.png" alt="" />
+										<div class="sheBeiStatusItemTxt">风扇温度</div>
+									</li>
+									<li class="sheBeiStatusItem">
+										<img class="sheBeiStatusItemPic show" src="images/1.png" alt="" />
+										<img class="sheBeiStatusItemPic" src="images/1.png" alt="" />
+										<div class="sheBeiStatusItemTxt">门开</div>
+									</li>
+									<li class="sheBeiStatusItem">
+										<img class="sheBeiStatusItemPic show" src="images/1.png" alt="" />
+										<img class="sheBeiStatusItemPic" src="images/1.png" alt="" />
+										<div class="sheBeiStatusItemTxt">消毒液</div>
+									</li>
+									
+								</ul>-->
+						
+								
+							</div>
+							<div class="dataBox">
+								
+								<!--压力流量模-->
+								<!--<ul class="yaLiLiuLiang clearfix">
+									<li class="yaLiLiuLiangItem">
+										<div class="yaLiLiuLiangItemNum">0.24</div>
+										<div class="yaLiLiuLiangItemTxt">进水压力</div>
+									</li>
+									<li class="yaLiLiuLiangItem">
+										<div class="yaLiLiuLiangItemNum">0.24</div>
+										<div class="yaLiLiuLiangItemTxt">出水压力</div>
+									</li>
+									<li class="sheBeiStatusItem">
+										<div class="yaLiLiuLiangItemNum">0.24</div>
+										<div class="yaLiLiuLiangItemTxt">风扇温度</div>
+									</li>
+									<li class="yaLiLiuLiangItem">
+
+										<div class="yaLiLiuLiangItemNum">0.24</div>
+										<div class="yaLiLiuLiangItemTxt">门开</div>
+									</li>
+									<li class="yaLiLiuLiangItem">
+
+										<div class="yaLiLiuLiangItemNum"> 7</div>
+										<div class="yaLiLiuLiangItemTxt">消毒液</div>
+									</li>
+									
+								</ul>-->
+							
+							
+								
+								
+								
+								
+								
+								
+							</div>
+							
+							
+						</div>
+						
+					</div>
+				</div>
+				
+				
+			</div>
+		
+		
+		<div class="pumpInfoBox">
+				<div class='pumpInfoTitle mui-clearfix'>
+					<div class="pumpInfoTitlePic"><span class="iconfont icon-bengfang"></span></div>
+					泵房信息
+					<a class="headerArrow mui-icon mui-icon mui-icon-arrowdown mui-pull-right"></a>
+				</div>
+				<ul class="pumpInfoList">
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+		<div class="pumpInfoBox jzBox">
+				<div class='pumpInfoTitle mui-clearfix'>
+					<div class="pumpInfoTitlePic jzPic"><span class="iconfont icon-bengfang"></span></div>
+					机组信息
+					<a class="headerArrow mui-icon mui-icon mui-icon-arrowdown mui-pull-right"></a>
+				</div>
+				<ul class="pumpInfoList">
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">机组名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+					<li class="pumpInfoItem mui-clearfix">
+						<div class="pumpInfoLeft mui-clearfix">
+							<div class="pumpInfoPic"></div>
+							<div class="pumpInfoName">泵房名称</div>
+						</div>
+						<div class="pumpInfoRight pumpInfoTxt mui-ellipsis">
+							上海市青浦区盈港东路
+						</div>
+					</li>
+				</ul>
+			</div>
+	
+	
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="js/VUE2.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script type="text/javascript">
+			(function($, doc) {
+				$.init({
+					gestureConfig:{
+					   
+					   swipe: true, //默认为true
+					   drag: true, //默认为true
+					   hold:false,//默认为false，不监听
+					   release:false//默认为false，不监听
+					  }
+				});
+				
+				
+				document.addEventListener('dragstart',function(e){
+					
+					document.addEventListener('drag',function(e){
+//						console.log(e.detail.center.y);
+
+//						console.log(jQuery('body').scrollTop());
+						var bodyScorllTop=jQuery('body').scrollTop();
+						if(bodyScorllTop>=300){ 
+//							jQuery('.dataItemSliderBox ').addClass('fixed');
+							jQuery('#sliderSegmentedControl ').addClass('fixed');
+							
+//							jQuery('#sliderSegmentedControl2 ').addClass('fixed');
+							
+						}else  {
+//							jQuery('#sliderSegmentedControl2 ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox').removeClass('fixed');
+								jQuery('#sliderSegmentedControl ').removeClass('fixed');
+						}
+					})
+					document.addEventListener('dragend',function(e){
+//						console.log(e.detail.center.y);
+
+//						console.log(jQuery('body').scrollTop());
+						var bodyScorllTop=jQuery('body').scrollTop();
+						if(bodyScorllTop>=300){ 
+//							jQuery('.dataItemSliderBox ').addClass('fixed');
+							jQuery('#sliderSegmentedControl ').addClass('fixed');
+							
+//							jQuery('#sliderSegmentedControl2 ').addClass('fixed');
+							
+						}else  {
+//							jQuery('#sliderSegmentedControl2 ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox').removeClass('fixed');
+								jQuery('#sliderSegmentedControl ').removeClass('fixed');
+						}
+					})
+				})
+				document.onscroll=function(){
+				
+					var bodyScorllTop=jQuery('body').scrollTop();
+						if(bodyScorllTop>=300){ 
+//							jQuery('.dataItemSliderBox ').addClass('fixed');
+							jQuery('#sliderSegmentedControl ').addClass('fixed');
+							
+//							jQuery('#sliderSegmentedControl2 ').addClass('fixed');
+							
+						}else  {
+//							jQuery('#sliderSegmentedControl2 ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox').removeClass('fixed');
+								jQuery('#sliderSegmentedControl ').removeClass('fixed');
+						}
+				}
+				
+				//设置页面事件
+				mui.plusReady(function(){
+					
+					var pumpDataVm=new Vue({
+						el:'#dataWrap',
+						data:{
+							jiChuInfo:{
+								address:'',
+								caiJiTime:''
+							}
+							
+						}
+					});
+					var caiJiInfoVm=new Vue({
+						el:'#caiJiInfoWrap',
+						data:{
+							currentJZCaiJiData:[]
+							
+						}
+					});
+
+					jQuery('.setBox').on('tap',function(){
+					
+						if(mui.os.plus){
+							jQuery.ActionFn.selfFireFunction("bengFangSetInfo", "preAct",'');
+							
+								jQuery.ActionFn.selfOpenWindow("bengFangSetInfo", "bengFangSetInfo.html",'',true);
+							
+							
+							
+						}
+					})
+					
+					
+					//泵房 数据获取  
+					function pumpDataGetFn(){
+						var pumpDataInfo=jQuery.ActionFn.GetlocalStorage('pumpInfoArr');
+						
+						var getDataArr={
+							PumpID: pumpDataInfo.bengFangId,
+							FName:jQuery.ActionFn.GetlocalStorage("launchData").FName,
+							FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+							Tocken:jQuery.ActionFn.GetlocalStorage("userInfo").TokenID,
+							FType:"APP"
+						};
+						jQuery.ActionFn.sendData_GetData('/V_YCJK/Search_Pump_JZReportList',getDataArr,pumpDataCallback);
+						
+					}
+					pumpDataGetFn();
+					
+					
+					//泵房数据 回调函数
+					
+					function pumpDataCallback(data){
+						
+//						alert(JSON.stringify(data.data));
+						jQuery.ActionFn.SetlocalStorage('currentPumpInfo',data);
+						console.log(JSON.stringify(jQuery.ActionFn.GetlocalStorage('currentPumpInfo')));
+						var jzData=jQuery.ActionFn.GetlocalStorage('currentPumpInfo').data[0].pumpJZ;
+						console.log(JSON.stringify(jzData));
+//						.data.pumpJZ
+						setJZDownMenu(jzData);
+//						console.log(JSON.parse(data));
+						pumpDataVm.$data.jiChuInfo.address=jQuery.ActionFn.GetlocalStorage('currentPumpInfo').data[0].PAddress;
+						
+//						if(){}
+					}
+					
+					
+					//根据  泵房进入 还是  机组进入 选择  当前 显示机组  
+					
+					function selectCurrentJZdata(jzId){
+						if(jzId){
+							var pumpJZData=jQuery.ActionFn.GetlocalStorage('currentPumpInfo').data[0].pumpJZ;
+							
+							jQuery.each(pumpData,function(ind,val){
+								if(pumpJZID===jzId){
+									caiJiInfoVm.$data.currentJZCaiJiData=pumpJZData[ind];
+								}
+								
+							});
+							
+						}
+					}
+				})
+				
+				
+//				var scrollUp=true,scrollDown=true;
+//				document.querySelector('.mui-content').addEventListener('dragstart',function(e){
+////					console.log(e.detail.deltaY);
+////					console.log(e);
+//					var oldTop=e.detail.center.y;
+//					document.addEventListener('drag',function(e){
+//						console.log(e.detail);
+////					console.log(e.detail.center.y);
+//					//console.log(jQuery('.detailHeader'));
+//					var newTop=e.detail.center.y-oldTop;
+////					console.log(newTop);
+//					if(e.detail.direction==='up'&&scrollUp&&newTop<-100){
+//						jQuery('.detailHeader').animate({'marginTop':'-320px'},1000);
+//						jQuery('.dataItemSliderBox').animate({'top':'0','bottom':'0'},1000);
+////						jQuery('.dataItemSliderGroup').animate({'scrollTop':0},10);
+//						scrollUp=false;
+//						scrollDown=true;
+////						jQuery('.detailHeader').css('marginTop',(parseFloat(jQuery('.detailHeader').css('marginTop'))+newTop/100)+'px');
+//					}
+//					if(jQuery('.dataItemSliderGroup').scrollTop()<=20){
+////						alert(1);
+//						if(e.detail.direction==='down'&&scrollDown&&newTop>=30){
+//							jQuery('.detailHeader').animate({'marginTop':'0px'},1000);
+//							jQuery('.dataItemSliderBox').animate({'top':'330px','bottom':'0'},1000);
+//							scrollUp=true;
+//							scrollDown=false;
+//						}
+//					}
+					
+//					alert(jQuery('.dataItemSliderGroup').scrollTop());
+//					console.log(newTop);
+					
+//						document.querySelector('.detailHeader').style.top+=e.detail.deltaY;
+					//	console.log(parseFloat(jQuery('.detailHeader').css('top')));
+//					})
+//					document.addEventListener('dragend',function(e){
+//					//	console.log('end');
+////						document.querySelector('.detailHeader').style.marginTop+=e.detail.deltaY;
+//					})
+//				});
+				
+				mui('.mui-switch').each(function() { //循环所有toggle
+				//toggle.classList.contains('mui-active') 可识别该toggle的开关状态
+					
+					this.addEventListener('toggle', function(event) {
+						
+						if(event.detail.isActive){
+							jQuery('.kongZhiBox').addClass('active');
+							jQuery('.dataBox').removeClass('active');
+						}else {
+							jQuery('.dataBox').addClass('active');
+							jQuery('.kongZhiBox').removeClass('active');
+						}
+						
+					});
+				});
+				function setJZDownMenu(data) {
+					
+					var userPickerArr=[];
+					jQuery.each(data,function(ind,val){
+						userPickerArr.push({
+							value:val.pumpJZID,
+							text:val.FName+"\["+val.PumpJZArea+"\]"
+						});
+					});
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData(userPickerArr);
+//					{
+//						value: 'ywj',
+//						text: '九组12312洁'
+//					} 
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+				
+					jQuery('.pickerName').html(userPickerArr[0].text);
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							console.log(JSON.stringify(items));
+							jQuery('.pickerName').html(items[0].text);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					//-----------------------------------------
+					
+					
+//					var pumpInfo=jQuery.ActionFn.GetlocalStorage('pumpInfoArr');
+//					console.log(pumpInfo.bengFangId);
+//					console.log(pumpInfo.jZId);
+//					
+					
+					
+					
+				
+				};
+				
+				
+			})(mui, document);
+			
+		</script>
+	</body>
+
+</html>
+
+

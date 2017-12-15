@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<p>{{currentData.name}}</p>
+			<p>{{currentData.age}}</p>
+			<p>{{currentData.data}}</p>
+		</div>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="js/VUE2.js"></script>
+	
+	
+		<script>
+			jQuery.ActionFn.SetlocalStorage('pumpInfoArr',{
+				name: 'san',
+				age: '12',
+				data:'123'
+			});
+			
+			var dataArr=jQuery.ActionFn.GetlocalStorage('pumpInfoArr');
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					currentData:{
+						name:'',
+						age:'',
+						data:''
+					}
+					
+				}
+			});
+			
+			window.setTimeout(function(){
+				vm.$data.currentData=dataArr;
+			},1000*3);
+			
+			window.setInterval(function(){
+				dataArr={
+					name: '12'+Math.random(),
+					age: '12'+Math.random(),
+					data: '12'+Math.random()
+				}
+				
+				vm.$data.currentData=dataArr;
+			},1000*8);
+		</script>
+	</body>
+</html>

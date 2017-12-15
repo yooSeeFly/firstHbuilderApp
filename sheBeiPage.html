@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>泵房监控首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/sheBeiPage.css" />
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+	</head>
+
+	<body>
+	
+		<div class="pumpPageHeaderBox">
+			<div class="mui-row">
+				<div class="mui-col-xs-1 pumpBackBox">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left "></a>
+				</div>
+				<div class="mui-col-xs-10 pumpSearchBox" id="jzBox">
+					<!--<div class="mui-input-row mui-search ">-->
+						<input type="search" class="mui-input-clear pumpSearch" placeholder="请输入设备名称搜索" @keyup.13="puSearch">
+					<!--</div>-->
+				</div>
+				
+				<!--<div class="sheBeiNumBox">
+					<div class="sheBeiTxt">设备数量<span class="sheBeiNum"></span></div>
+				</div>-->
+				<!--<div class="sheBeiLieBiao">-->
+					<!--<a class="bengFangPage" >设备列表</a>-->
+						
+					<!--href="bengFangPage.html"-->
+				<!--</div>-->
+			</div>
+			
+		</div>
+			
+		<ul class="itemNav mui-table-view mui-grid-view mui-grid-9">
+		    <li class="mui-table-view-cell mui-media mui-col-xs-3 itemNavItem active">
+		    	<a href="#">	          
+		            <div class="mui-media-body"> <img src="images/1.png" alt="" />全部</div>
+		    	</a>
+		    </li>
+		    <li class="mui-table-view-cell mui-media mui-col-xs-3 itemNavItem">
+		    	<a href="#">                                      
+		                        
+		            <div class="mui-media-body"><img src="images/1.png" alt="" /> 在线</div>          
+		    	</a>                                              
+		    </li>                                                 
+		    <li class="mui-table-view-cell mui-media mui-col-xs-3 itemNavItem">
+		    	<a href="#">                                     
+		                   
+		            <div class="mui-media-body"> <img src="images/1.png" alt="" />离线</div>         
+		    	</a>                                             
+		    </li>                                                
+		    <li class="mui-table-view-cell mui-media mui-col-xs-3 itemNavItem">
+		    	<a href="#">
+		          
+		            <div class="mui-media-body"> <img src="images/1.png" alt="" />报警</div>
+		    	</a>
+		    </li>
+		</ul> 
+		
+		<div class="mui-content">
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/VUE2.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				subpages:[{
+					url:'sheBei_sub.html',
+					id:'sheBei_sub',
+					styles:{
+						top: '135px',//'190px', 
+						bottom: '0px',
+					}
+				}]
+				
+			})
+			
+			$.ActionFn.SetlocalStorage("pumpName",'');
+			$.ActionFn.SetlocalStorage("jzState",'');
+			
+			mui.plusReady(function(){
+				
+				var vmBengFang=new Vue({
+					el:'#jzBox',
+					data:{
+						pumpNum: $.ActionFn.GetlocalStorage("pumpNum")
+					},
+					methods:{
+						puSearch:function(){
+							pumSearch();
+						}
+					},
+					computed: {
+						pumpNumNew : function(){
+							if(!this.pumpNum){
+								return 0;
+							}
+							return this.pumpNum;
+						}
+					}
+				});
+//			mui('.pumpPageHeaderBox').on('tap', 'a', function() {
+//				
+//				
+//				var href = this.getAttribute('href');
+//
+//				//非plus环境，直接走href跳转
+//				if(!mui.os.plus){
+//					
+//					location.href = href;
+//					return;
+//				}else {
+//					
+//					document.querySelector(".bengFangPage").addEventListener("tap", function() {
+//						$.ActionFn.selfFireFunction("bengFangPage", "preAct",'');
+//						//alert(1);
+//						$.ActionFn.selfOpenWindow("bengFangPage", "bengFangPage.html",'',false);
+//						//$.ActionFn.selfFireFunction("pullrefresh_main", "preAct",'');
+//						
+//						//$.ActionFn.selfOpenWindow("pullrefresh_main", "pullrefresh_main.html");
+//					})
+//				}
+
+
+//			});
+			
+			
+			//    具体 条件的  搜索
+		function pumSearch(){
+			
+					$.ActionFn.SetlocalStorage("pumpName",document.querySelector('.pumpSearch').value);
+						var child = plus.webview.getWebviewById('sheBei_sub');
+						mui.fire(child, "pagerefresh")
+		}
+		
+		
+			
+			mui('.itemNav').on('tap', '.itemNavItem', function() {
+				var index=$(this).index(),state='';
+				$(this).addClass('active').siblings().removeClass('active');
+				
+				switch(index){
+                case 0:{
+                    state='';
+                    break;
+                }
+                case 1:{
+                    state=1;
+                    break;
+                }
+                case 2:{
+                    state=0;
+                    break;
+                }
+                case 3:{
+                    state = 2;
+                    break;
+                }
+                default: {
+                    state = '';
+                    break;
+                }
+                    
+            }
+				$.ActionFn.SetlocalStorage("jzState",state);
+//				$.ActionFn.SetlocalStorage("pumpName",document.querySelector('.pumpSearch').value);
+						var child = plus.webview.getWebviewById('sheBei_sub');
+						mui.fire(child, "pagerefresh")
+			})
+			
+			//从子级  传过来 的  pump 数量
+//		window.addEventListener("pageNum", function (e) {
+//			
+//				document.querySelector('.sheBeiNum').innerHTML=e.detail.num;
+//			    
+//			});
+		
+		});
+		</script>
+	</body>
+
+</html>
+
+

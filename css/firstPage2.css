@@ -1,0 +1,17 @@
+.gongNengList {
+  background: #fff!important;
+}
+.gongNengList > li {
+  border-color: #f2f1f1!important;
+  background: #fff!important;
+}
+.mainBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 44px;
+  background: red;
+  width: 100%;
+}

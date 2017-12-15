@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/mui.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/loginMain.css"/>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/flexible.js"></script>
+		<script src="js/tweenMax.min.js"></script>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+		<style>
+			.mui-toast-container {transform: scale(2) translateX(-30%);}
+		</style>
+	</head>
+	<body>
+		<div class="mainBox">
+			<div class="logoBox"></div>
+			<h3 class="logoText">熊猫智慧水务</h3>		
+			<div class="inputBox">
+				<div class="userBox infoBox">
+					<div class="userBg infoBg"></div>
+					<input id="account" type="text" placeholder="请输入手机号码" />
+				</div>
+				<div class="passwordBox infoBox">
+					<div class="passwordBg infoBg"></div>
+					<input id="password" type="password" placeholder="请输入密码" />
+				</div>
+				
+			</div>
+			<button id="login" class="loginBtn">登录</button>
+				
+			<!--<div class="threeLogin clearfix"><span class="leftLabel"></span><span class="centerTxt">第三方登录</span><span class="rightLabel"></span></div>-->
+			<!--<div class="weChat"></div>-->
+		</div>
+	</body>
+	<script>
+//		$(function(){
+//			$('.loginBtn').click(function(){
+//				window.location.href='firstPage.html';
+//			});
+//		});
+
+//var pageList = [{
+//				url: 'firstPage.html',
+//				id: 'firstPage',
+//				createNew: false
+//			}]
+//			setTimeout(function() {
+//				for(var i = 0; i < pageList.length; i++) {
+//					var page = mui.preload({
+//						url: pageList[i].url,
+//						id: pageList[i].id, //默认使用当前页面的url作为id
+//					});
+//				}
+//			}, 500)
+//			
+
+
+mui.plusReady(function(){
+	plus.webview.currentWebview().setStyle({
+		scrollIndicator: 'none'
+	});
+});
+
+
+mui.init({
+		//下拉刷新、上拉加载
+		pullRefresh:{
+			
+		},
+		//手势配置
+		gestureConfig:{
+			'popGesture': 'none'
+		},
+		//侧滑关闭
+		swipeBack:false,
+		//监听Android手机的back、menu按键
+		keyEventBind:{
+			backButton:false,
+			menubutton: false
+		},
+		//处理窗口关闭前的业务
+		beforeback:function(){},
+		
+		statusBarBackground: '#fff'
+	});
+	
+	var launchFlag=$.ActionFn.GetlocalStorage('launchFlag');
+	if(launchFlag=='1'){
+		
+		var launchData=$.ActionFn.GetlocalStorage('launchData');
+		if(!launchData){
+			launchFlag='0'
+			
+		}else {
+			document.querySelector("#account").value=launchData.FName;
+		    document.querySelector("#password").value=launchData.FPassWord;
+		}
+		
+	}
+	var btn=document.getElementById('login');
+	btn.addEventListener("tap",function(){
+	console.log(00);
+		if(document.querySelector("#account").value.trim()==""){
+			console.log(111);
+			mui.toast("账号不能为空！");
+			return;
+		}else if(document.querySelector("#password").value.trim()==""){
+			mui.toast("密码不能为空");
+			return;
+		}
+		
+		var objectData=new Object();
+		objectData.FName=document.querySelector("#account").value;
+		objectData.FPassWord=document.querySelector("#password").value;
+	
+		var userInfo={};
+		console.log(22);
+		
+		
+		$.ActionFn.sendData_Login("",objectData,successCallBac);
+		
+		console.log(33 );
+		function successCallBac(returnData){
+//			console.log(JSON.stringify(returnData));
+//			console.log(objectData.FName);
+//			console.log(objectData.FPassWord);
+//			console.log(returnData.model.TokenID);
+//			console.log(returnData.model.UserID);
+//			console.log(returnData.model.Message);
+//			console.log(returnData.model.Status);
+//			console.log(12);
+			
+			userInfo.TokenID=returnData.model.TokenID;
+			userInfo.UserID=returnData.model.UserID;
+			$.ActionFn.SetlocalStorage("userInfo",userInfo);   
+			if(returnData.model.Status===1){
+				if(!mui.os.plus){
+				location.href='firstPage.html';
+				return;
+				}else {
+					
+					$.ActionFn.selfFireFunction("FirstPage",'preAct',"");
+					
+					$.ActionFn.SetlocalStorage('launchFlag',"1");             
+					$.ActionFn.SetlocalStorage("launchData",objectData);        
+					
+					
+					setTimeout(function(){
+						$.ActionFn.selfOpenWindow('FirstPage',"firstPage.html",'',true);
+					},500);
+
+
+//					$.ActionFn.selfFireFunction("pageWrap",'preAct',"");
+//					
+//					$.ActionFn.SetlocalStorage('launchFlag',"1");             
+//					$.ActionFn.SetlocalStorage("launchData",objectData);        
+//					
+//					
+//					setTimeout(function(){
+//						$.ActionFn.selfOpenWindow('pageWrap',"pageWrap.html",'',true);
+//					},500);
+//					
+					
+					
+					
+				}
+			}else {
+				mui.toast(returnData.model.Message);
+			}
+			
+
+		}
+	});
+	
+
+	</script>
+</html>
+
+
+
+
+
+

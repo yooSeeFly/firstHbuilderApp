@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>泵房监控地图</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/icons-extra.css" />
+		
+		<style>
+			[v-cloak]{
+			    display: none;
+			}
+			
+			.mui-active
+			{
+				color: #929292!important;
+			}
+			.mui-tab-item.active
+			{
+				color: #007aff!important;
+			}
+			
+		</style>
+		
+		<script src="http://api.map.baidu.com/api?v=2.0&ak=lSs5x0CtdFvp81zUi3sxZo7Zcxm2BC8X"></script>
+		<script src="js/bMapInit.js"></script>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">			
+			<h1 class="mui-title">熊猫智慧水务</h1>
+		</header>-->
+		
+		<footer class="mui-bar mui-bar-tab firstPageFooter">
+			<a class="mui-tab-item firstPage" href="firstPage.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item warnDetail" href="warnDetail.html">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-notice"><!--<span class="mui-badge">9</span>--></span>
+				<span class="mui-tab-label">报警</span>
+			</a>
+			<a class="mui-tab-item mui-active map" href="map.html">
+				<span class="mui-icon mui-icon mui-icon-location"><!--<span class="mui-badge">9</span>--></span>
+				<span class="mui-tab-label">地图</span>
+			</a>
+			<a class="mui-tab-item me" id="submit" href="me.html">
+				<span class="mui-icon mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+			
+		</footer>
+		
+		
+			<div id="map" style="position: absolute;top: 0;left: 0;right: 0;bottom: 52px;"></div>
+				
+	
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				//下拉刷新、上拉加载
+				pullRefresh:{
+					
+				},
+				//手势配置
+				gestureConfig:{
+					'popGesture': 'none'
+				},
+				//侧滑关闭
+				swipeBack:false,
+				//监听Android手机的back、menu按键
+				keyEventBind:{
+					backButton:false,
+					menubutton: false
+				},
+				//处理窗口关闭前的业务
+				beforeback:function(){},
+				
+				statusBarBackground: '#fff'
+			});
+			
+			
+			
+			//主列表点击事件
+			mui('.firstPageFooter').on('tap', 'a', function() {
+				
+				var id = this.getAttribute("data-wid");
+			
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					
+					location.href = href;
+					return;
+				}else {
+					
+					
+				}
+
+
+			});
+				if(mui.os.plus){
+					document.querySelector(".firstPage").addEventListener("tap", function() {
+						
+		
+						$.ActionFn.selfOpenWindow("FirstPage", "firstPage.html");
+					})
+					document.querySelector(".warnDetail").addEventListener("tap", function() {
+						
+						$.ActionFn.selfOpenWindow("warnDetail", "warnDetail.html");
+					})
+//					document.querySelector(".map").addEventListener("tap", function() {
+//						
+//						alert(11);
+//						$.ActionFn.selfOpenWindow("Map", "map.html");
+//					})
+					document.querySelector(".me").addEventListener("tap", function() {
+							
+						$.ActionFn.selfOpenWindow("Me", "me.html");
+					})
+					
+				}
+			jQuery('.firstPageFooter a').removeClass('mui-active');
+			jQuery('.firstPageFooter a.map').addClass('active');       
+			
+			window.onload=function(){
+				var map;
+				mapInit(0,16,0,0,0,0);
+			}
+		</script>
+	</body>
+
+</html>
+
+
+

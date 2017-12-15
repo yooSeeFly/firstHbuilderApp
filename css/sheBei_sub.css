@@ -1,0 +1,82 @@
+.itemNav {
+  position: fixed;
+  top: 130px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 56px;
+  background: #fff;
+}
+.itemNav .itemNavItem {
+  height: 100%;
+  line-height: 56px;
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  border-right: 1px solid #f2f1f1;
+  background: #fff!important;
+}
+.itemNav .itemNavItem.mui-active {
+  background: #f2f1f1!important;
+}
+.itemNav .itemNavItem.active {
+  border-bottom: 2px solid  #509dfa;
+}
+.itemNav .itemNavItem.active .mui-media-body {
+  color: #509dfa;
+}
+.itemNav .itemNavItem > a .mui-media-body {
+  height: 18px!important;
+  line-height: 18px!important;
+  vertical-align: middle;
+}
+.itemNav .itemNavItem img {
+  width: 20px;
+  vertical-align: middle;
+}
+.pumpDataList .pumpDataListItem {
+  border-bottom: 1px solid #d7d7d7;
+}
+.pumpDataList .pumpDataListItem > a {
+  padding-left: 8px!important;
+  padding-right: 4px!important;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemBg {
+  width: 38px;
+  height: 38px;
+  margin-right: 6px;
+  display: inline-block;
+  background: #aaaaaa;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  line-height: 38px;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemBg.online {
+  background: #59a0f6;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemBg.warn {
+  background: #ed1a3d;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemTxt .pumpDataListItemPumpName {
+  color: #000;
+  font-size: 16px;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemTxt .pumpDataListItemPumpName .pumpDataListItemPumpDTU {
+  font-size: 14px;
+  color: #cccccc;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemTxt .pumpDataListItemPumpTxt {
+  margin-top: 4px;
+  font-size: 12px!important;
+  color: #ccc;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemTxt .pumpDataListItemPumpTxt .caiJiTimeBox {
+  width: 56%;
+  float: left;
+  margin-right: 2px;
+}
+.pumpDataList .pumpDataListItem .pumpDataListItemTxt .pumpDataListItemPumpTxt .inPutPressBox {
+  width: 43%;
+  float: right;
+  display: inline-block;
+}

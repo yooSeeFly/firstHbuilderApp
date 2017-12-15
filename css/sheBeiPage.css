@@ -1,0 +1,117 @@
+.mui-ellipsis {
+  overflow: hidden;
+  /*规定当文本溢出包含元素时发生的事情*/
+  white-space: nowrap;
+  /*如何处理元素内的空白符。nowrap表示文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+  text-overflow: ellipsis;
+  /*显示省略符号来代表被修剪的文本*/
+}
+.pumpPageHeaderBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  padding-top: 10px;
+  background: -webkit-linear-gradient(left, #5f8bf7 0%, #37bafe 100%);
+}
+.pumpPageHeaderBox .pumpBackBox > a {
+  padding: 8px;
+  font-size: 22px;
+  color: #fff;
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search {
+  width: 96%;
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search .pumpSearch {
+  background: rgba(0, 0, 0, 0.1);
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search .mui-placeholder {
+  color: #80ade6;
+  border-radius: 3px!important;
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search .mui-placeholder.mui-active {
+  background: red!important;
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search .mui-placeholder.mui-active::before {
+  color: #80ade6!important;
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search .mui-placeholder.mui-active::before {
+  color: #80ade6!important;
+  width: 100px;
+}
+.pumpPageHeaderBox .pumpSearchBox > .mui-search .mui-placeholder .mui-icon-search {
+  color: #80ade6;
+}
+.pumpPageHeaderBox .pumpSearchBox .pumpSearch {
+  color: #fff;
+}
+.pumpPageHeaderBox .sheBeiNumBox {
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 114px;
+  height: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  text-indent: 14px;
+  background: #4d81da;
+  border-radius: 0 15px 15px 0;
+}
+.pumpPageHeaderBox .sheBeiNumBox .sheBeiNum {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #fff;
+}
+.pumpPageHeaderBox .sheBeiLieBiao {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  width: 114px;
+  height: 30px;
+  line-height: 30px;
+  color: #544f01;
+  font-size: 14px;
+  background: #fff100;
+  text-align: center;
+  border-radius: 15px 0 0 15px;
+}
+.itemNav {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 56px;
+  background: #fff;
+}
+.itemNav .itemNavItem {
+  height: 100%;
+  line-height: 56px;
+  padding: 0!important;
+  border-right: 1px solid #f2f1f1;
+  background: #fff!important;
+}
+.itemNav .itemNavItem.mui-active {
+  background: #f2f1f1!important;
+}
+.itemNav .itemNavItem.active {
+  border-bottom: 2px solid  #509dfa;
+}
+.itemNav .itemNavItem.active .mui-media-body {
+  color: #509dfa;
+}
+.itemNav .itemNavItem > a .mui-media-body {
+  height: 18px!important;
+  line-height: 18px!important;
+  vertical-align: middle;
+}
+.itemNav .itemNavItem img {
+  width: 20px;
+  vertical-align: middle;
+}
+#pullrefresh {
+  top: 186px;
+  margin-top: 8px;
+}

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/icons-extra.css" />
+		<link rel="stylesheet" href="css/me.css" />
+		
+		<style>
+			[v-cloak]{
+			    display: none;
+			}
+			
+			.mui-active
+			{
+				color: #929292!important;
+			}
+			.mui-tab-item.active
+			{
+				color: #007aff!important;
+			}
+			
+		</style>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+	</head>
+
+	<body >
+		<!--页面主结构开始-->
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<!--页面主结构结束-->
+		<!--单页面开始-->
+		<footer class="mui-bar mui-bar-tab firstPageFooter">
+			<a class="mui-tab-item firstPage" href="firstPage.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item warn" href="warn.html">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-notice"><!--<span class="mui-badge">9</span>--></span>
+				<span class="mui-tab-label">报警</span>
+			</a>
+			<!--<a class="mui-tab-item map" href="map.html">
+				<span class="mui-icon mui-icon mui-icon-location"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">地图</span>
+			</a>-->
+			<a class="mui-tab-item  mui-active me" id="submit" href="input.html">
+				<span class="mui-icon mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+			
+		</footer>
+		<div id="setting" class="mui-page">
+			<!--页面标题栏开始-->
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">设置</h1>
+			</div>
+			<!--页面标题栏结束-->
+			<!--页面主内容区开始-->
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<!--<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell mui-media">
+								<a class="mui-navigate-right" href="#account">
+									<img class="mui-media-object mui-pull-left head-img" id="head-img" src="">
+									<div class="mui-media-body">
+										
+										<p class='mui-ellipsis'></p>
+									</div>
+								</a>
+							</li>
+						</ul>-->
+						<div class="meHeader">
+							<div class="userIcon">
+								<img class="mui-media-object head-img" id="head-img" style="width: 100%;height: 100%;" src="">
+							</div>
+							
+							<p class="userName"></p>
+							<!--<a href="#account" class="mui-btn ziLiaoBtn">完善个人信息<span class="mui-icon mui-icon-arrowright"></span></a>-->
+						</div>
+						<!--<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">手势密码</a>
+							</li>
+						</ul>-->
+						<!--<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								<a href="#account" class="mui-navigate-right">账号与安全</a>
+							</li>
+						</ul>-->
+						<!--<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">报警联系人</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">修改密码</a>
+							</li>
+							
+						</ul>-->
+						<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell" id="update">
+								<a href="#" class="mui-navigate-right">检测更新 <span id="banben" class="mui-pull-right mui-text-rightsd">1.1.2</span></a>
+								<!--<a href="#" class="mui-navigate-right " ></a>
+								<a href="#" class="mui-navigate-right " id="banben">hahahaQin</a>
+								<a href="#" class="mui-navigate-right " id="banben">hahahaQin</a>-->
+							</li>
+							
+							
+						</ul>
+						<!--<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								<a href="#notifications" class="mui-navigate-right">新消息通知</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#privacy" class="mui-navigate-right">隐私</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#general" class="mui-navigate-right">通用</a>
+							</li>
+						</ul>-->
+						<!--<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								<a href="#about" class="mui-navigate-right">关于MUI <i class="mui-pull-right update">V3.7.0</i></a>
+							</li>
+						</ul>-->
+						<ul class="mui-table-view" >
+							<li class="mui-table-view-cell" style="text-align: center;">
+								<a style="color: red;" id="quitBtn">退出当前账号</a>
+							</li>
+						</ul>
+						
+		
+					</div>
+				</div>
+			</div>
+			<!--页面主内容区结束-->
+		</div>
+		<!--单页面结束-->
+		<div id="account" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>设置
+				</button>
+				<h1 class="mui-center mui-title">账号与安全</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a id="head" class="mui-navigate-right">头像
+								<span class="mui-pull-right head">
+									<img class="head-img mui-action-preview" id="head-img1" src=""/>
+								</span>
+							</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>姓名<span class="mui-pull-right">许文华</span></a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>OA账号<span class="mui-pull-right">嘘嘘嘘</span></a>
+							</li>
+						</ul>
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a>QQ号<span class="mui-pull-right">88888888</span></a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>手机号<span class="mui-pull-right">18601234567</span></a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>邮箱地址<span class="mui-pull-right">VanverXU</span></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+	<script src="js/mui.min.js "></script>
+	<script src="js/mui.view.js "></script>
+	<!--<script src='../js/feedback.js'></script>-->
+	<script>
+		mui.init({
+				//下拉刷新、上拉加载
+				pullRefresh:{
+					
+				},
+				//手势配置
+				gestureConfig:{
+					'popGesture': 'none'
+				},
+				//侧滑关闭
+				swipeBack:false,
+				//监听Android手机的back、menu按键
+				keyEventBind:{
+					backButton:false,
+					menubutton: false
+				},
+				//处理窗口关闭前的业务
+				beforeback:function(){},
+				
+				statusBarBackground: '#fff'
+			});
+			
+			
+			mui.plusReady(function(){
+				
+				jQuery('.userName').html(jQuery.ActionFn.GetlocalStorage("launchData").FName);
+			
+			//主列表点击事件
+			mui('.firstPageFooter').on('tap', 'a', function() {
+				
+				var id = this.getAttribute("data-wid");
+			
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					
+					location.href = href;
+					return;
+				}else {
+					
+					
+				}
+
+
+			});
+				if(mui.os.plus){
+					document.querySelector(".firstPage").addEventListener("tap", function() {
+						
+		
+						$.ActionFn.selfOpenWindow("FirstPage", "firstPage.html");
+					})
+					document.querySelector(".warn").addEventListener("tap", function() {
+						
+						$.ActionFn.selfOpenWindow("Warn", "warnDetail.html");
+					})
+//					document.querySelector(".map").addEventListener("tap", function() {
+//						
+//
+//						$.ActionFn.selfOpenWindow("Map", "map.html");
+//					})
+//					document.querySelector(".me").addEventListener("tap", function() {
+//							
+//						$.ActionFn.selfOpenWindow("Me", "me.html");
+//					})
+					
+				}
+				
+			jQuery('.firstPageFooter a').removeClass('mui-active');
+			jQuery('.firstPageFooter a.me').addClass('active');
+			
+			  
+			//版本号
+			
+			document.getElementById("banben").innerHTML=plus.runtime.version;
+			
+//			检测更新
+		document.getElementById("update").addEventListener('tap', function() {
+//			alert(1);
+			var alermPra={
+					FName:$.ActionFn.GetlocalStorage("launchData").FName,
+					FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+					Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+					FType:"APP",
+					"appid": plus.runtime.appid,
+					"version": plus.runtime.version
+				};
+				
+//			var server = "AppVersion/getVersion"; //获取升级描述文件服务器地址
+			jQuery.ActionFn.sendData_GetData('/AppVersion/getVersion',alermPra,updateCallback,updateWrong);
+			
+			console.log(JSON.stringify(alermPra));
+			console.log(12312312321);
+			//update callback
+			
+			
+//			mui.getJSON(server,alermPra, function(data) {
+//				alert('werew');
+//				if (data.success) {
+//					alert(JSON.stringify(data.obj.url));
+//					plus.ui.confirm('是否更新', function(i) {
+//						if (0 == i) {
+//							plus.runtime.openURL(data.obj.url);
+//						}
+//					}, data.title, ["立即更新", "取　　消"]);
+//				} else {
+//					mui.toast('智慧水务已经是最新版本')
+//				}
+//			},function(data){
+//				alert(JSON.stringify(data));
+//			});
+		});
+		
+		function updateWrong(XMLHttpRequest, textStatus, errorThrown){
+//			alert(JSON.stringify(XMLHttpRequest));
+//			alert(textStatus);
+//			alert(34);
+		}
+		function updateCallback(data){
+				console.log(JSON.stringify(data));
+				if (data.success) {
+//					alert(JSON.stringify(data.obj.url));
+					if(data.obj.url!="null"){
+						plus.ui.confirm('是否更新', function(i) {
+							
+							if (0 == i.index) {
+	//							alert(1);
+	//							plus.runtime.openURL(data.obj.url);
+	// 							var dtask = plus.downloader.createDownload(data.obj.url);
+	//							 plus.runtime.install(dtask);
+	//							
+								  var wt = plus.nativeUI.showWaiting('下载更新中，请勿关闭');   
+								 var dtask = plus.downloader.createDownload(jQuery.ActionFn._SelUrl+(data.obj.url), {}, function(d, status) {  
+	//							 	alert(12);
+	                                if (status == 200) { // 下载成功   
+	                                    var path = d.filename;   
+	                                    console.log(d.filename);   
+	                                    plus.runtime.install(path);   
+	                                } else { //下载失败   
+	                                    alert("Download failed: " + status);   
+	                                }   
+	                            });
+	                            
+	                            dtask.start();   
+	                            
+	                       
+							}
+						}, '更新提示', ["立即更新", "取　　消"]);
+					}else {
+						mui.toast('智慧水务已经是最新版本')
+					}
+				} else {
+					mui.toast('智慧水务已经是最新版本')
+				}
+				
+			}
+		//初始化单页view
+		var viewApi = mui('#app').view({
+			defaultPage: '#setting'
+		});
+		//初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll();
+		//分享操作
+		var shares = {};
+		
+		
+		
+		setTimeout(function () {
+			defaultImg();
+			setTimeout(function() {
+				initImgPreview();
+			}, 300);
+		},500);
+	
+		var view = viewApi.view;
+		(function($) {
+			//处理view的后退与webview后退
+			var oldBack = $.back;
+			$.back = function() {
+				if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
+					viewApi.back();
+				} else { //执行webview后退
+					oldBack();
+				}
+			};
+			//监听页面切换事件方案1,通过view元素监听所有页面切换事件，目前提供pageBeforeShow|pageShow|pageBeforeBack|pageBack四种事件(before事件为动画开始前触发)
+			//第一个参数为事件名称，第二个参数为事件回调，其中e.detail.page为当前页面的html对象
+			view.addEventListener('pageBeforeShow', function(e) {
+				//				console.log(e.detail.page.id + ' beforeShow');
+			});
+			view.addEventListener('pageShow', function(e) {
+				//				console.log(e.detail.page.id + ' show');
+			});
+			view.addEventListener('pageBeforeBack', function(e) {
+				//				console.log(e.detail.page.id + ' beforeBack');
+			});
+			view.addEventListener('pageBack', function(e) {
+				//				console.log(e.detail.page.id + ' back');
+			});
+		})(mui);
+		//更换头像
+		mui(".mui-table-view-cell").on("tap", "#head", function(e) {
+			if(mui.os.plus){
+				var a = [{
+					title: "拍照"
+				}, {
+					title: "从手机相册选择"
+				}];
+				plus.nativeUI.actionSheet({
+					title: "修改头像",
+					cancel: "取消",
+					buttons: a
+				}, function(b) {
+					switch (b.index) {
+						case 0:
+							break;
+						case 1:
+							getImage();
+							break;
+						case 2:
+							galleryImg();
+							break;
+						default:
+							break
+					}
+				})	
+			}
+			
+		});
+
+		function getImage() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function(e) {
+				plus.io.resolveLocalFileSystemURL(e, function(entry) {
+					var s = entry.toLocalURL() + "?version=" + new Date().getTime();
+					console.log(s);
+					document.getElementById("head-img").src = s;
+					document.getElementById("head-img1").src = s;
+					//变更大图预览的src
+					//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
+					document.querySelector("#__mui-imageview__group .mui-slider-item img").src = s + "?version=" + new Date().getTime();;;
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(s) {
+				console.log("error" + s);
+			}, {
+				filename: "_doc/head.jpg"
+			})
+		}
+
+		function galleryImg() {
+			plus.gallery.pick(function(a) {
+				plus.io.resolveLocalFileSystemURL(a, function(entry) {
+					plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
+						root.getFile("head.jpg", {}, function(file) {
+							//文件已存在
+							file.remove(function() {
+								console.log("file remove success");
+								entry.copyTo(root, 'head.jpg', function(e) {
+										var e = e.fullPath + "?version=" + new Date().getTime();
+										document.getElementById("head-img").src = e;
+										document.getElementById("head-img1").src = e;
+										//变更大图预览的src
+										//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
+										document.querySelector("#__mui-imageview__group .mui-slider-item img").src = e + "?version=" + new Date().getTime();;
+									},
+									function(e) {
+										console.log('copy image fail:' + e.message);
+									});
+							}, function() {
+								console.log("delete image fail:" + e.message);
+							});
+						}, function() {
+							//文件不存在
+							entry.copyTo(root, 'head.jpg', function(e) {
+									var path = e.fullPath + "?version=" + new Date().getTime();
+									document.getElementById("head-img").src = path;
+									document.getElementById("head-img1").src = path;
+									//变更大图预览的src
+									//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现
+									document.querySelector("#__mui-imageview__group .mui-slider-item img").src = path;
+								},
+								function(e) {
+									console.log('copy image fail:' + e.message);
+								});
+						});
+					}, function(e) {
+						console.log("get _www folder fail");
+					})
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(a) {}, {
+				filter: "image"
+			})
+		};
+
+		function defaultImg() {
+			if(mui.os.plus){
+				plus.io.resolveLocalFileSystemURL("_doc/head.jpg", function(entry) {
+					var s = entry.fullPath + "?version=" + new Date().getTime();;
+					document.getElementById("head-img").src = s;
+					document.getElementById("head-img1").src = s;
+				}, function(e) {
+					document.getElementById("head-img").src = 'images/logo.png';
+					document.getElementById("head-img1").src = 'images/logo.png';
+				})
+			}else{
+				document.getElementById("head-img").src = 'images/logo.png';
+				document.getElementById("head-img1").src = 'images/logo.png';
+			}
+			
+		}
+		document.getElementById("head-img1").addEventListener('tap', function(e) {
+			e.stopPropagation();
+		});
+	
+		function initImgPreview() {
+			var imgs = document.querySelectorAll("img.mui-action-preview");
+			imgs = mui.slice.call(imgs);
+			if (imgs && imgs.length > 0) {
+				var slider = document.createElement("div");
+				slider.setAttribute("id", "__mui-imageview__");
+				slider.classList.add("mui-slider");
+				slider.classList.add("mui-fullscreen");
+				slider.style.display = "none";
+				slider.addEventListener("tap", function() {
+					slider.style.display = "none";
+				});
+				slider.addEventListener("touchmove", function(event) {
+					event.preventDefault();
+				})
+				var slider_group = document.createElement("div");
+				slider_group.setAttribute("id", "__mui-imageview__group");
+				slider_group.classList.add("mui-slider-group");
+				imgs.forEach(function(value, index, array) {
+					//给图片添加点击事件，触发预览显示；
+					value.addEventListener('tap', function() {
+						slider.style.display = "block";
+						_slider.refresh();
+						_slider.gotoItem(index, 0);
+					})
+					var item = document.createElement("div");
+					item.classList.add("mui-slider-item");
+					var a = document.createElement("a");
+					var img = document.createElement("img");
+					img.setAttribute("src", value.src);
+					a.appendChild(img)
+					item.appendChild(a);
+					slider_group.appendChild(item);
+				});
+				slider.appendChild(slider_group);
+				document.body.appendChild(slider);
+				var _slider = mui(slider).slider();
+			}
+		}
+		
+		
+		
+		//退出操作
+		document.getElementById("quitBtn").addEventListener('tap', function() {
+				var btnArray = ['否', '是'];
+				mui.confirm('确定退出当前账号？', '操作提示', btnArray, function(e) {
+					if (e.index == 1) {		
+						if(!mui.os.plus){
+							
+							window.location.href="login.html";
+							return;
+						} else {
+//							var curr = plus.webview.currentWebview();
+//							var wvs = plus.webview.all();
+//							for (var i = 0, len = wvs.length; i < len; i++) {
+//							//关闭除setting页面外的其他页面
+//							if (wvs[i].getURL() == curr.getURL())
+//							continue;
+//							plus.webview.close(wvs[i]);
+//							}
+//							//打开login页面后再关闭setting页面
+//							$.ActionFn.selfOpenWindow("Login", "login.html");
+//							curr.close();
+//							
+//							$.ActionFn.selfFireFunction("Login",'preAct',"");
+//							setTimeout(function(){
+//								var we =  plus.webview.currentWebview();
+//								we.hide();
+//							},500);
+//							$.ActionFn.selfOpenWindow("Login", "login.html");
+//							
+							
+							 plus.runtime.restart();
+						}
+						
+					} else {
+						return;
+					}
+				})
+			});
+		})
+	</script>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<link rel="stylesheet" href="css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<link rel="stylesheet" href="css/yunXingFangAn.css" />
+		<script src="js/mui.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a class="mui-action-back mui-icon  mui-pull-right" style="font-size: 14px;margin-top: 8px;">确定</a>-->
+		   
+		   <a class="mui-action-back mui-icon  mui-pull-left" style="font-size: 14px;margin-top: 8px;">取消</a>
+		    <h1 class="mui-title">运行方案设定</h1>
+		</header>
+		<div class="mui-content">
+			
+			<ul class="yunXingContent" id="yunXingFangAn">
+				<li class="yunXingItem" v-for="item in listData"  @click="getCurrentFangAn(item.FangAnID)">
+					<div class="yunXingTitle mui-clearfix">
+						<div class="yunXingTitleDot"></div>
+						<div class="yunXingTitleName" v-cloak>{{item.Title}}</div>
+						<!--<div class="yunXingTitleCheck"></div>-->
+						
+					</div>
+					<div class="yunXingContentTxt" v-cloak>
+						{{item.Description}}
+					</div>
+				</li>
+				
+				<!--<li class="yunXingItem">
+					<div class="yunXingTitle mui-clearfix">
+						<div class="yunXingTitleDot"></div>
+						<div class="yunXingTitleName">方案名称</div>
+						<div class="yunXingTitleCheck"></div>
+						
+					</div>
+					<div class="yunXingContentTxt">
+						第三方打死撒地方撒旦afdsdsaf飞洒的范德萨发大水阿士大夫撒地方撒阿斯顿发大水
+					</div>
+				</li>
+				
+				<li class="yunXingItem">
+					<div class="yunXingTitle mui-clearfix">
+						<div class="yunXingTitleDot"></div>
+						<div class="yunXingTitleName">方案名称</div>
+						<div class="yunXingTitleCheck"></div>
+						
+					</div>
+					<div class="yunXingContentTxt">
+						第三方打死撒地方撒旦afdsdsaf飞洒的范德萨发大水阿士大夫撒地方撒阿斯顿发大水
+					</div>
+				</li>-->
+			</ul>
+		    
+		</div>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="js/VUE2.js"></script>
+		<script>
+			mui.init();
+			
+			mui.plusReady(function(){
+				
+				var yunXingFangAn=new Vue({
+					el:'#yunXingFangAn',
+					data: {
+						listData:[
+							
+						]
+					},
+					methods: {
+						getCurrentFangAn: function(v){
+							
+							var main = plus.webview.getWebviewById('bengFangSetInfo');
+								mui.fire(main, "yunXingFangAnID",{
+								    fangAnId:v
+								})
+								  mui.back();
+						}
+					}
+				});
+				
+				//  获取地址方案  函数
+				function yunXingFangAnFn(jzID){
+					var alermPra={
+						FName:$.ActionFn.GetlocalStorage("launchData").FName,
+						FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+						Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+						FType:"APP",
+						PumpJZID: jzID,
+//						FangAnID: fangAnID
+					};
+					
+				$.ActionFn.sendData_GetData_noLoading('/V_BFGL/GetPumpJZScheme',alermPra,yunXingCallback);
+					
+				}
+				
+				 yunXingFangAnFn($.ActionFn.GetlocalStorage('currentJZId'));
+				//运行方案 回调 函数 
+				
+				function yunXingCallback(data){
+					console.log(JSON.stringify(data));
+					if(data.data.length){
+//						console.log(JSON.stringify(data));
+//						jQuery('.yunXingTxtBox').html(data[0].Description);
+						yunXingFangAn.$data.listData=data.data;
+						console.log(JSON.stringify(yunXingFangAn.$data.listData));
+					}
+				}
+				
+				
+				//
+				
+				
+				
+			})
+			
+			
+		
+			
+			
+			
+		</script>
+	</body>
+</html>

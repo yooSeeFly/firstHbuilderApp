@@ -1,0 +1,584 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>泵房监控首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/icons-extra.css" />
+		<link rel="stylesheet" href="css/firstPage.css" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<style>
+			[v-cloak]{
+			    display: none;
+			}
+			
+			.mui-active
+			{
+				color: #929292!important;
+			}
+			.mui-tab-item.active
+			{
+				color: #007aff!important;
+			}
+			
+		</style>
+		
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">			
+			<h1 class="mui-title">熊猫智慧水务</h1>
+		</header>-->
+		
+		<footer class="mui-bar mui-bar-tab firstPageFooter">
+			<a class="mui-tab-item mui-active firstPage active" href="firstPage.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item warn" href="warnDetail.html">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-notice"><!--<span class="mui-badge">9</span>--></span>
+				<span class="mui-tab-label">报警</span>
+			</a>
+			<!--<a class="mui-tab-item map" href="map.html">
+				<span class="mui-icon mui-icon mui-icon-location"></span>
+				<span class="mui-tab-label">地图</span>
+			</a>			-->
+			<a class="mui-tab-item me" id="submit" href="me.html">
+				<span class="mui-icon mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+			
+		</footer>
+		
+		<div class="mui-content">
+			<div id="slider" class="mui-slider" >
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/banner3.png">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/banner.png">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/banner1.png">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/banner2.png">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/banner3.png">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/banner.png">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+
+			<ul class="gongNengList mui-table-view mui-grid-view mui-grid-9">
+			    <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a class="yuanCheng" href="yuanCheng.html">
+			           <img src="images/1.png" alt="" />
+			            <div class="mui-media-body">远程监控</div></a></li>
+			    <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+			            <img src="images/2.png" alt="" />
+			            <div class="mui-media-body">维护保养</div></a></li>
+			    <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+			            <img src="images/3.png" alt="" />
+			            <div class="mui-media-body">决策分析</div></a></li>
+			    <!--<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+			            <img src="images/4.png" alt="" />
+			            <div class="mui-media-body">预警报警</div></a></li>-->
+			    <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+			            <img src="images/5.png" alt="" />
+			            <div class="mui-media-body">工程管理</div></a></li>
+			    <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+			            <img src="images/6.png" alt="" />
+			            <div class="mui-media-body">巡检排查</div></a></li>
+			    <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="#">
+			           <img src="images/7.png" alt="" />
+			            <div class="mui-media-body">基础信息</div></a></li>
+			    
+			   
+			</ul> 
+		  	<h5 class="warnTitle">最新预警/报警 </h5>
+		  	<div class="warnBox"  id="warnList">
+		  	
+			  	<!--<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						-->
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell mui-media" v-for="item in warnList">
+								<a href="javascript:;">
+									<div class=" mui-pull-left warnClass">
+										<i class="iconfont  " v-bind:class="item.mType"></i>
+										</div>
+									
+									<div class="mui-media-body">
+										 
+										<p class='mui-ellipsis' v-cloak>{{item.msg}}</p>
+									    <p class="mui-right" style="text-align: right;" v-cloak>{{item.date |timeDeal}}</p>
+									</div>
+								</a>
+							</li>
+					<!--<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="images/muwu.jpg">
+							<div class="mui-media-body">
+								
+								<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							    <p class="mui-right" style="text-align: right;">2017-12 12:12:12</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="images/cbd.jpg">
+							<div class="mui-media-body">
+								
+								<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							    <p class="mui-right" style="text-align: right;">2017-12 12:12:12</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="images/cbd.jpg">
+							<div class="mui-media-body">
+								
+								<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							    <p class="mui-right" style="text-align: right;">2017-12 12:12:12</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="images/cbd.jpg">
+							<div class="mui-media-body">
+								
+								<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							    <p class="mui-right" style="text-align: right;">2017-12 12:12:12</p>
+							</div>
+						</a>
+					</li>-->
+	
+				</ul>
+					<!--</div>
+				</div>-->
+		  	</div>
+			
+				
+		</div>
+		
+		<!--<footer class="mui-bar mui-bar-footer">			
+			<h1 class="mui-title">熊猫智慧水务</h1>
+		</footer>-->
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+		<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+		<script src="js/VUE2.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			
+			var data=[];
+			
+			
+			var pageList = 
+			[{
+				url: 'yuanChengnew.html',
+				id: 'yuanChengnew',
+				createNew: false
+			},
+			{
+				url: 'map.html',
+				id: 'map',
+				createNew: false
+			},
+			{
+				url: 'me.html',
+				id: 'me',
+				createNew: false
+			}
+			];
+			setTimeout(function() {
+				for(var i = 0; i < pageList.length; i++) {
+					var page = mui.preload({
+						url: pageList[i].url,
+						id: pageList[i].id, //默认使用当前页面的url作为id
+					});
+				}
+			}, 500)
+					
+		
+			mui.plusReady(function(){
+				
+				//检查更新
+				
+			function updataFn() {
+//			alert(1);
+			var alermPra={
+					FName:$.ActionFn.GetlocalStorage("launchData").FName,
+					FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+					Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+					FType:"APP",
+					"appid": plus.runtime.appid,
+					"version": plus.runtime.version
+				};
+				
+//			var server = "AppVersion/getVersion"; //获取升级描述文件服务器地址
+			jQuery.ActionFn.sendData_GetData('/AppVersion/getVersion',alermPra,updateCallback);
+			
+			console.log(JSON.stringify(alermPra));
+			console.log(12312312321);
+			//update callback
+			
+			
+//			mui.getJSON(server,alermPra, function(data) {
+//				alert('werew');
+//				if (data.success) {
+//					alert(JSON.stringify(data.obj.url));
+//					plus.ui.confirm('是否更新', function(i) {
+//						if (0 == i) {
+//							plus.runtime.openURL(data.obj.url);
+//						}
+//					}, data.title, ["立即更新", "取　　消"]);
+//				} else {
+//					mui.toast('智慧水务已经是最新版本')
+//				}
+//			},function(data){
+//				alert(JSON.stringify(data));
+//			});
+		}
+		
+		updataFn();
+		
+		function updateCallback(data){
+				console.log(JSON.stringify(data));
+				if (data.success) {
+//					alert(JSON.stringify(data.obj.url));
+					if(data.obj.isUpdate){
+						plus.ui.confirm('是否更新', function(i) {
+							
+							if (0 == i.index) {
+	//							alert(1);
+	//							plus.runtime.openURL(data.obj.url);
+	// 							var dtask = plus.downloader.createDownload(data.obj.url);
+	//							 plus.runtime.install(dtask);
+	//							
+								  var wt = plus.nativeUI.showWaiting('下载更新中，请勿关闭');   
+								 var dtask = plus.downloader.createDownload(jQuery.ActionFn._SelUrl+(data.obj.url), {}, function(d, status) {  
+	//							 	alert(12);
+	                                if (status == 200) { // 下载成功   
+	                                    var path = d.filename;   
+	                                    console.log(d.filename);   
+	                                    plus.runtime.install(path);   
+	                                } else { //下载失败   
+	                                    mui.toast("Download failed: " + status);   
+	                                }   
+	                            });
+	                            
+	                            dtask.start();   
+	                            
+	                       
+							}else {
+								 plus.runtime.restart();
+							}
+						}, '更新提示', ["立即更新", "取　　消"]);
+					
+					}else if(data.obj.url!="null"){
+						mui.toast('有最新版本');
+					}
+					
+				} else {
+//					mui.toast('智慧水务已经是最新版本')
+				}
+				
+			}
+		
+				
+				
+				jQuery.ActionFn.showLoading();
+				
+				
+				var firstGetData=true; 
+				
+				
+					mui.init({
+				//下拉刷新、上拉加载
+				pullRefresh:{
+					
+				},
+				//手势配置
+				gestureConfig:{
+					'popGesture': 'none'
+				},
+				//侧滑关闭
+				swipeBack:false,
+				//监听Android手机的back、menu按键
+				keyEventBind:{
+					backButton:false,
+					menubutton: false
+				},
+				//处理窗口关闭前的业务
+				beforeback:function(){},
+				
+				statusBarBackground: '#fff'
+				
+				});
+			
+			Vue.filter('arrSub',function(value){
+				if(!value){
+					return '';
+					
+				}else {
+					return value.slice(0,5);
+				}
+			});
+		Vue.filter('timeDeal',function(value){
+				if(!value){ 
+					return '';
+					
+				}else {
+					return value.replace(/[a-z]/ig,' ');
+				}
+			});
+			var vm=new Vue({
+				el:'#warnList',
+				data:{
+					warnList:[]
+				},
+				methods:{
+					
+				}
+			});
+			
+			$.ActionFn.SetlocalStorage("pumpHouseName",'');
+			$.ActionFn.SetlocalStorage("pumpName",'');
+			
+			
+			console.log(JSON.stringify(plus.runtime));
+			console.log('nizhidaowozaidengnima');
+			//主列表点击事件
+			mui('.firstPageFooter').on('tap', 'a', function() {
+				
+				var id = this.getAttribute("data-wid");
+			
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					
+					location.href = href;
+					return;
+				}else {
+					
+					
+				}
+
+
+			});
+				if(mui.os.plus){
+//					document.querySelector(".firstPage").addEventListener("tap", function() {
+//						
+//		
+//						$.ActionFn.selfOpenWindow("FirstPage", "firstPage.html");
+//					})
+					document.querySelector(".warn").addEventListener("tap", function() {
+						
+						$.ActionFn.selfOpenWindow("Warn", "warnDetail.html",'',true);
+					})
+//					document.querySelector(".map").addEventListener("tap", function() {
+//						
+//
+//						$.ActionFn.selfOpenWindow("Map", "map.html",'',true);
+//					})
+					document.querySelector(".me").addEventListener("tap", function() {
+							
+						$.ActionFn.selfOpenWindow("Me", "me.html",'',true);
+					})
+					
+				}
+			
+			jQuery('.firstPageFooter a').removeClass('mui-active');
+			jQuery('.firstPageFooter a.firstPage').addClass('active');
+			//主菜单的点击事件
+			mui('.gongNengList').on('tap', 'a', function() {
+				
+				var id = this.getAttribute("data-wid");
+			
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					
+					location.href = href;
+					return;
+				}else {
+					
+					
+				}
+
+
+			});
+			
+			if(mui.os.plus){
+					document.querySelector(".yuanCheng").addEventListener("tap", function() {
+						$.ActionFn.selfFireFunction("yuanChengnew", "preAct",'');
+						//alert(1);
+						$.ActionFn.selfOpenWindow("yuanChengnew", "yuanChengnew.html",'',true);
+						//$.ActionFn.selfFireFunction("pullrefresh_main", "preAct",'');
+						
+						//$.ActionFn.selfOpenWindow("pullrefresh_main", "pullrefresh_main.html");
+					})
+					
+					
+				}
+			        
+			
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+			  interval:7000//自动轮播周期，若为0则不自动播放，默认为0；
+			});
+			warnListLoad();
+		
+			
+			window.setInterval(function(){
+				warnListLoad();
+			},1000*60);
+		
+			
+			function warnListLoad(){
+				var alermPra={
+					FName:$.ActionFn.GetlocalStorage("launchData").FName,
+					FPassWord:'',//$.ActionFn.GetlocalStorage("launchData").FPassWord,
+					Tocken:$.ActionFn.GetlocalStorage("userInfo").TokenID,
+					FType:"APP"
+				};
+				console.log(alermPra.Tocken);
+
+//			console.log(alermPra);
+			
+			
+//			$.ajax({
+//				url:'http://192.168.1.97:8008/V_YCJK/ALLAlarm_List',
+//				type:'POST',
+//				dataType:'json',
+//				data:alermPra,
+//				success:function(data){
+//					console.log(JSON.stringify(data));
+//					warnListCallback(data);
+//				},
+//				error: function(data){
+//					console.log(data);
+//				}
+//			});
+				$.ActionFn.sendData_GetData_noLoading('/V_YCJK/ALLAlarm_List',alermPra,warnListCallback);
+				//console.log(1);
+				
+			}
+			
+			function warnListCallback(data){
+				
+				if(data.success){
+					//console.log(123321);
+					if(firstGetData){
+						jQuery.ActionFn.closeLoading();
+						firstGetData=false;
+					}
+					
+					console.log(JSON.stringify(data.data));
+					//alert(data);
+					var dataList=[];
+			 
+					$(data.data).each(function(ind,val){
+						var dataItem={};
+						dataItem.msg=val.FSetMsg;
+						dataItem.date=val.FAlarmTime;
+						switch(val.FMarkerType){
+							case 1 :{
+								dataItem.mType='icon-bengfang';
+								break;
+							}
+							case 2 :{
+								dataItem.mType='icon-famen1';
+								break;
+							}
+							case 3 :{
+								dataItem.mType='icon-liuliang';
+								break;
+							}
+							case 4 :{
+								dataItem.mType='icon-shuichang';
+								break;
+							}
+							case 5 :{
+								dataItem.mType='icon-shuiyuan1';
+								break;
+							}
+							case 6 :{
+								dataItem.mType='icon-dabiao';
+								break;
+							}
+							case 7 :{
+								dataItem.mType='icon-yali';
+								break;
+							}
+							case 8 :{
+								dataItem.mType='icon-tiaofeng';
+								break;
+							}
+							case 9 :{
+								dataItem.mType='icon-shuizhi';
+								break;
+							}
+						}
+						
+						dataList.push(dataItem);
+		//				console.log(dataItem);
+						vm.warnList=dataList.slice(0,5);
+					});
+				}else {
+					mui.toast(data.msg);
+				}
+			}
+		});	
+		
+		</script>
+	</body>
+
+</html>
+
+

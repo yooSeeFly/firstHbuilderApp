@@ -1,0 +1,919 @@
+body {
+  background: #f2f1f1;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+.clearfix {
+  zoom: 0;
+}
+.clearfix:after {
+  content: '';
+  max-height: 1;
+  display: block;
+  clear: both;
+}
+[v-cloak] {
+  display: none;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background: #f2f1f1;
+}
+.detailHeader {
+  padding-top: 10px;
+  text-align: center;
+  width: 100%;
+  background: -webkit-linear-gradient(top, #37bafe 0%, #5788eb 100%);
+}
+.detailHeader .headerArrow {
+  color: #fff;
+}
+.detailHeader .detailPumpName {
+  font-size: 18px;
+  color: #fff;
+}
+.detailHeader .areaSlect {
+  height: 28px;
+  border-radius: 14px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.12);
+  border: none;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.detailHeader .pumpPicBox {
+  position: relative;
+  width: 300px;
+  height: 154px;
+  margin: 0 auto 4px;
+  background: url(../img/wuShi.png) no-repeat;
+  background-size: cover;
+  color: #4ca1fa;
+  font-size: 12px;
+}
+.detailHeader .pumpPicBox.xiang {
+  background-image: url(../img/xiangShi.png);
+}
+.detailHeader .pumpPicBox.guan {
+  background-image: url(../img/guanShi.png);
+}
+.detailHeader .pumpPicBox .inPress {
+  position: absolute;
+  left: 126px;
+  top: 33px;
+  width: 30px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 4px;
+}
+.detailHeader .pumpPicBox .outPress {
+  position: absolute;
+  left: 126px;
+  top: 138px;
+  width: 30px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 4px;
+}
+.detailHeader .pumpPicBox .pumpBox {
+  position: absolute;
+  top: 55px;
+  left: 28px;
+  width: 246px;
+  height: 40px;
+}
+.detailHeader .pumpPicBox .pumpBox > li {
+  float: left;
+  width: 16.6%;
+  height: 40px;
+}
+.detailHeader .pumpPicBox .pumpBox > li .pumpYeBox {
+  position: relative;
+  width: 1px ;
+  height: 40px;
+  margin: 0 auto;
+  background: #fff;
+}
+.detailHeader .pumpPicBox .pumpBox > li .pumpYeBox .pumpYe {
+  position: absolute;
+  top: 10px;
+  margin-left: -9px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+}
+.detailHeader .pumpPicBox .pumpBox > li .pumpYeBox .pumpYe span {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #cacaca;
+  background: #509dfa;
+}
+.detailHeader .pumpPicBox .pumpBox > li .pumpYeBox .pumpYe span.warn {
+  color: #f68396;
+}
+.detailHeader .pumpPicBox .pumpBox > li .pumpYeBox .pumpYe span.online {
+  color: #58f0a5;
+}
+.detailHeader .pumpPicBox .pumpBox > li .pumpYeBox .pumpYe span.offline {
+  color: #cacaca;
+}
+.detailHeader .adressTime {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: #5985ea;
+}
+.detailHeader .adressTime > div {
+  width: 50%;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  float: left;
+}
+.gongNengList {
+  margin-top: 10px!important;
+  margin-bottom: 10px!important;
+}
+.gongNengList > li.mui-table-view-cell {
+  height: 64px;
+  border-right: 1px solid  #f2f1f1!impotant;
+  background: #fff!important;
+  padding-top: 0!important;
+}
+.gongNengList > li.mui-table-view-cell > a {
+  height: 64px;
+}
+.gongNengList > li.mui-table-view-cell > a .allLiu {
+  font-size: 12px;
+  color: #d0d0d0;
+}
+.gongNengList > li.mui-table-view-cell > a .liuNumBox {
+  font-size: 12px;
+  color: #d0d0d0;
+}
+.gongNengList > li.mui-table-view-cell > a .liuNumBox .liuNum {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+.dataItemSlider {
+  background: #fff;
+  border-top: 1px solid #d7d7d7;
+}
+.dataItemSlider > a {
+  height: 37px;
+}
+.dataItemSlider > a.mui-active {
+  border-bottom: 2px solid #5e8cf7!important;
+}
+#sliderSegmentedControl.fixed {
+  position: fixed;
+  top: 0;
+}
+.dataItemSliderBox.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: red;
+}
+.dataItemSliderBox .dataItemSlider {
+  background: #fff;
+  border-top: 1px solid #d7d7d7;
+  width: 100%!important;
+}
+.dataItemSliderBox .dataItemSlider > a {
+  height: 37px;
+  width: 40%!important;
+}
+.dataItemSliderBox .dataItemSlider > a.mui-active {
+  border-bottom: 2px solid #5e8cf7!important;
+}
+.dataItemSliderBox .dataItemSliderGroup {
+  margin-top: 3px;
+  height: 84%;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .caiJiSetBox {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  font-size: 12px;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .caiJiSetBox .caiJiSetTxt {
+  float: left;
+  width: 40%;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .caiJiSetBox .caiJiSetTxt .caiJiBoxImg {
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin: 15px 6px;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .caiJiSetBox .caiJiSetTxt .caiJiBoxTxt {
+  float: left;
+  color: #aaaaaa;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .buttonBox {
+  float: left;
+  width: 60%;
+  height: 40px;
+  padding-top: 3px;
+  text-align: right;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .buttonBox .qieHuanBtnBox {
+  display: inline-block;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .buttonBox .qieHuanBtnBox .mui-switch-blue.mui-active {
+  background: #5e8cf7;
+  border: 2px solid #5e8cf7;
+}
+.dataItemSliderBox .dataItemSliderGroup .currentDataBox .buttonBox button {
+  width: 54px;
+  height: 30px;
+  margin-right: 6px;
+  background: #5e8cf7;
+  border-radius: 12px;
+  color: #fff;
+}
+.tabS {
+  display: none;
+}
+.tabS.active {
+  display: block;
+}
+.caiJiInfoBox {
+  width: 100%;
+  margin-top: 10px;
+}
+.caiJiInfoBox .kongZhiJianDing {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 0;
+  background: #fff;
+}
+.caiJiInfoBox .kongZhiJianDing > li {
+  float: left;
+  width: 50%;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e4e4e4;
+  color: #888888;
+}
+.caiJiInfoBox .kongZhiJianDing > li:nth-child(odd) {
+  border-right: 1px solid #e4e4e4;
+}
+.caiJiInfoBox .kongZhiJianDing > li:nth-last-child(1) {
+  border-bottom: none;
+}
+.caiJiInfoBox .kongZhiJianDing > li:nth-last-child(2) {
+  border-bottom: none;
+}
+.caiJiInfoBox .kongZhiJianDing > li .kongZhiJianDingItemTxt {
+  padding-left: 6px;
+}
+.caiJiInfoBox .kongZhiJianDing > li .kongZhiJianDingItemNum {
+  color: #333333;
+}
+.caiJiInfoBox .kongZhiJianDing > li .kongZhiJianDingItemSet {
+  background: none;
+  border: none;
+  outline: none;
+  color: #5e8cf7;
+}
+.caiJiInfoBox .sheBeiStatusBox {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  margin-top: 10px;
+  padding: 12px 0;
+}
+.caiJiInfoBox .sheBeiStatusBox > li {
+  float: left;
+  box-sizing: border-box;
+  width: 20%;
+  font-size: 12px;
+  color: #000;
+  text-align: center;
+}
+.caiJiInfoBox .sheBeiStatusBox > li img {
+  width: 25px;
+  height: 20px;
+  display: none;
+}
+.caiJiInfoBox .sheBeiStatusBox > li img.show {
+  display: inline-block;
+}
+.caiJiInfoBox .sheBeiQiTing {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 0;
+  margin-top: 10px;
+  background: #fff;
+}
+.caiJiInfoBox .sheBeiQiTing > li {
+  box-sizing: border-box;
+  height: 38px;
+  line-height: 38px;
+  font-size: 14px;
+  color: #333333;
+  padding-left: 10px;
+}
+.caiJiInfoBox .sheBeiQiTing > li button {
+  margin-top: 4px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #5e8cf7;
+}
+.caiJiInfoBox .yaLiLiuLiang {
+  width: 100%;
+  box-sizing: border-box;
+  background: #FFF;
+  border-top: 1px solid #f2f1f1;
+  border-bottom: 1px solid #f2f1f1;
+}
+.caiJiInfoBox .yaLiLiuLiang > li {
+  float: left;
+  box-sizing: border-box;
+  width: 20%;
+  text-align: center;
+  padding: 10px 0;
+}
+.caiJiInfoBox .yaLiLiuLiang > li .yaLiLiuLiangItemNum {
+  font-size: 20px;
+  color: #333333;
+  height: 20px;
+  line-height: 20px;
+}
+.caiJiInfoBox .yaLiLiuLiang > li .yaLiLiuLiangItemTxt {
+  font-size: 12px;
+  color: #b0b0b0;
+  height: 20px;
+  line-height: 20px;
+}
+.caiJiInfoBox .bianPinBox {
+  width: 100%;
+  background: #FFF;
+  margin: 10px 0;
+  padding: 16px 0;
+}
+.caiJiInfoBox .bianPinBox .bianPinHead {
+  background: #FFF;
+  width: 100%;
+}
+.caiJiInfoBox .bianPinBox .bianPinHead .bianPinLine {
+  position: relative;
+  height: 2px;
+  width: 50%;
+  margin: 0 auto;
+  background: #5e8cf7;
+  text-align: center;
+}
+.caiJiInfoBox .bianPinBox .bianPinHead .bianPinLine .bianPinTxt {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  min-width: 90px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 20px;
+  line-height: 20px;
+  margin-top: -10px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #5e8cf7;
+}
+.caiJiInfoBox .bianPinBox .bianPinBody {
+  width: 94%;
+  box-sizing: border-box;
+  border: 1px dashed #b8b8b8;
+  margin-left: 3%;
+  margin-top: 20px;
+  padding: 0;
+}
+.caiJiInfoBox .bianPinBox .bianPinBody > li {
+  width: 20%;
+  background: #f5f5f5;
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
+}
+.caiJiInfoBox .bianPinBox .bianPinBody > li .bianPinName {
+  border-bottom: 1px dashed #b8b8b8;
+  padding-bottom: 4px;
+}
+.caiJiInfoBox .bianPinBox .bianPinBody > li .bianPinNumBox {
+  color: #d0d0d0;
+  padding-top: 4px;
+}
+.caiJiInfoBox .bianPinBox .bianPinBody > li .bianPinNumBox .bianPinNum {
+  font-size: 16px;
+  color: #333333;
+}
+.caiJiInfoBox .liuLiangBox {
+  width: 100%;
+  background: #FFF;
+  margin: 10px 0;
+  padding: 16px 0;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangHead {
+  background: #FFF;
+  width: 100%;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangHead .liuLiangLine {
+  position: relative;
+  height: 2px;
+  width: 50%;
+  margin: 0 auto;
+  background: #5e8cf7;
+  text-align: center;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangHead .liuLiangLine .liuLiangTxt {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  min-width: 90px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 20px;
+  line-height: 20px;
+  margin-top: -10px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #5e8cf7;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangBody {
+  width: 94%;
+  box-sizing: border-box;
+  border: 1px dashed #b8b8b8;
+  margin-left: 3%;
+  margin-top: 20px;
+  padding: 0;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangBody > li {
+  width: 25%;
+  background: #f5f5f5;
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangBody > li .liuLiangName {
+  border-bottom: 1px dashed #b8b8b8;
+  padding-bottom: 4px;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangBody > li .liuLiangNumBox {
+  color: #333;
+  padding-top: 4px;
+}
+.caiJiInfoBox .liuLiangBox .liuLiangBody > li .liuLiangNumBox .liuLiangnNum {
+  font-size: 16px;
+  color: #333333;
+}
+.caiJiInfoBox .menDengBox {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #f2f1f1;
+  border-bottom: 1px solid #f2f1f1;
+  padding: 14px 0;
+}
+.caiJiInfoBox .menDengBox .menDeng > li {
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+}
+.caiJiInfoBox .menDengBox .menDeng > li .menDengPic {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+}
+.caiJiInfoBox .menDengBox .menDeng > li .menDengPic span {
+  font-size: 34px;
+  color: #7b7b7b;
+}
+.caiJiInfoBox .menDengBox .menDeng > li .menDengPic span.kai {
+  color: #5e8cf7;
+}
+.caiJiInfoBox .yuZhuoBox {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #f2f1f1;
+  border-bottom: 1px solid #f2f1f1;
+  padding: 14px 0;
+}
+.caiJiInfoBox .yuZhuoBox .yuZhuo > li {
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+}
+.caiJiInfoBox .yuZhuoBox .yuZhuo > li .yuZhuoPic {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+}
+.caiJiInfoBox .yuZhuoBox .yuZhuo > li .yuZhuoPic span {
+  font-size: 34px;
+  color: #5e8cf7;
+}
+.caiJiInfoBox .yuZhuoBox .yuZhuo > li .yuZhuoPic span.kai {
+  color: #eb7642;
+}
+.caiJiInfoBox .yuZhuoBox .yuZhuo > li .yuZhuoNum {
+  font-size: 16px;
+  color: #b0b0b0;
+}
+.caiJiInfoBox .kaiDuBox {
+  width: 100%;
+  background: #fff;
+  margin: 10px 0;
+  padding: 14px 0 0;
+}
+.caiJiInfoBox .kaiDuBox .kaiDuTitleBox {
+  width: 100%;
+  height: 34px;
+  border-bottom: 1px solid #f2f1f1;
+}
+.caiJiInfoBox .kaiDuBox .kaiDuTitleBox .kaiDuTitlePic {
+  margin-left: 12px;
+  margin-top: 3px;
+  float: left;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background: #5e8cf7;
+}
+.caiJiInfoBox .kaiDuBox .kaiDuTitleBox .kaiDuTitlePic span {
+  color: #fff;
+  font-size: 14px;
+}
+.caiJiInfoBox .kaiDuBox .kaiDuTitleBox .kaiDuTitleTxt {
+  float: left;
+  text-indent: 8px;
+  font-size: 14px;
+  color: #333;
+}
+.caiJiInfoBox .kaiDuBox .kaiduItemBox {
+  width: 100%;
+}
+.caiJiInfoBox .kaiDuBox .kaiduItemBox > li {
+  height: 43px;
+  line-height: 43px;
+  border-bottom: 1px solid #f2f1f1;
+}
+.caiJiInfoBox .kaiDuBox .kaiduItemBox > li:last-child {
+  border-bottom: none;
+}
+.caiJiInfoBox .kaiDuBox .kaiduItemBox > li .kaiDuItemName {
+  float: left;
+  font-size: 12px;
+  color: #999999;
+  margin-left: 18px;
+}
+.caiJiInfoBox .kaiDuBox .kaiduItemBox > li .kaiDuItemName .kaiDuItemNamePic {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ccc;
+  margin-right: 4px;
+}
+.caiJiInfoBox .kaiDuBox .kaiduItemBox > li .kaiDuItemNum {
+  float: right;
+  font-size: 12px;
+  color: #333;
+  margin-right: 14px;
+}
+.caiJiInfoBox .shuiXiangBox {
+  width: 100%;
+  background: #fff;
+  margin: 10px 0;
+  padding: 14px 0 0;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangTitleBox {
+  width: 100%;
+  height: 34px;
+  border-bottom: 1px solid #f2f1f1;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangTitleBox .shuiXiangTitlePic {
+  margin-left: 12px;
+  margin-top: 3px;
+  float: left;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background: #eb7642;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangTitleBox .shuiXiangTitlePic span {
+  color: #fff;
+  font-size: 14px;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangTitleBox .shuiXiangTitleTxt {
+  float: left;
+  text-indent: 8px;
+  font-size: 14px;
+  color: #333;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangItemBox {
+  width: 100%;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangItemBox > li {
+  height: 43px;
+  line-height: 43px;
+  border-bottom: 1px solid #f2f1f1;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangItemBox > li:last-child {
+  border-bottom: none;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangItemBox > li .shuiXiangItemName {
+  float: left;
+  font-size: 12px;
+  color: #999999;
+  margin-left: 18px;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangItemBox > li .shuiXiangItemName .shuiXiangItemNamePic {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ccc;
+  margin-right: 4px;
+}
+.caiJiInfoBox .shuiXiangBox .shuiXiangItemBox > li .shuiXiangItemNum {
+  float: right;
+  font-size: 12px;
+  color: #333;
+  margin-right: 14px;
+}
+.caiJiInfoBox .bengStateBox {
+  width: 100%;
+  background: #FFF;
+  margin: 10px 0;
+  padding: 16px 0;
+}
+.caiJiInfoBox .bengStateBox .bengStateHead {
+  background: #FFF;
+  width: 100%;
+}
+.caiJiInfoBox .bengStateBox .bengStateHead .bengStateLine {
+  position: relative;
+  height: 2px;
+  width: 50%;
+  margin: 0 auto;
+  background: #5e8cf7;
+  text-align: center;
+}
+.caiJiInfoBox .bengStateBox .bengStateHead .bengStateLine .bengStateTxt {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 20px;
+  min-width: 90px;
+  line-height: 20px;
+  margin-top: -10px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #5e8cf7;
+}
+.caiJiInfoBox .bengStateBox .bengStateTitle {
+  width: 94%;
+  box-sizing: border-box;
+  border: 1px dashed #b8b8b8;
+  margin-left: 3%;
+  margin-top: 20px;
+  padding: 0;
+}
+.caiJiInfoBox .bengStateBox .bengStateTitle > li {
+  width: 20%;
+  height: 23px;
+  line-height: 23px;
+  background: #f5f5f5;
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
+}
+.caiJiInfoBox .bengStateBox .bengStateTitle > li:last-child {
+  width: 40%;
+}
+.caiJiInfoBox .bengStateBox .bengStateTitle > li .bengStateTitleName {
+  padding-bottom: 4px;
+}
+.caiJiInfoBox .bengStateBox .bengStateTitle > li .bengStateTitleNumBox {
+  color: #d0d0d0;
+  padding-top: 4px;
+}
+.caiJiInfoBox .bengStateBox .bengStateTitle > li .bengStateTitleNumBox .bengState {
+  font-size: 16px;
+  color: #333333;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody {
+  width: 94%;
+  box-sizing: border-box;
+  border: 1px dashed #b8b8b8;
+  border-top: none;
+  margin-left: 3%;
+  padding: 0;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li {
+  width: 100%;
+  background: #f5f5f5;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
+  border-bottom: 1px dashed #b8b8b8;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li:last-child .bengStateName {
+  border-bottom: none;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li > div {
+  float: left;
+  text-align: center;
+  width: 20%;
+  height: 23px;
+  line-height: 23px;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li > div:last-child {
+  width: 40%;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStateName {
+  padding-bottom: 4px;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStatePic span {
+  color: #999;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStatePic span.offline {
+  color: #999;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStatePic span.online {
+  color: #5e8cf7;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStatePic span.warn {
+  color: #eb7642;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStateNumBox {
+  color: #d0d0d0;
+  padding-top: 4px;
+}
+.caiJiInfoBox .bengStateBox .bengStateBody > li .bengStateNumBox .bengState {
+  font-size: 16px;
+  color: #333333;
+}
+.caiJiInfoBox .bianPinQi .bengStateTitle > li {
+  width: 16.6%!important;
+}
+.caiJiInfoBox .bianPinQi .bengStateBody > li div {
+  width: 16.6%!important;
+}
+.caiJiInfoBox .uaIcBox {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #f2f1f1;
+  border-bottom: 1px solid #f2f1f1;
+  padding: 14px 0;
+}
+.caiJiInfoBox .uaIcBox .uaIc > li {
+  text-align: center;
+  font-size: 12px;
+  color: #ccc;
+  width: 16.66%;
+}
+.caiJiInfoBox .uaIcBox .uaIc > li .uaIcPic {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+.caiJiButton {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  z-index: 111111111111;
+  border: none;
+  outline: none;
+  width: 24px;
+  height: 36px;
+  line-height: 12px;
+  border-radius: 5px 0 0 5px;
+  background: #fcff00;
+  color: #696a01;
+  font-size: 12px;
+  text-align: left;
+}
+.caiJiButton:focus {
+  background: #fcff00;
+}
+.caiJiButton:hover {
+  backgorund: #fcff00;
+}
+.setBox {
+  position: fixed;
+  bottom: 60px;
+  z-index: 111111111111;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  border-radius: 50%;
+  background: #5e8cf7;
+}
+.setBox span {
+  font-size: 26px;
+  color: #fff;
+}
+.pumpInfoBox {
+  width: 100%;
+  background: #fff;
+}
+.pumpInfoBox:first-child {
+  margin-top: 8px;
+}
+.pumpInfoBox .pumpInfoTitle {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #f2f1f1;
+  font-size: 14px;
+}
+.pumpInfoBox .pumpInfoTitle .pumpInfoTitlePic {
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  border-radius: 50%;
+  background: #5e8cf7;
+  float: left;
+  margin: 9px 8px 0 12px;
+}
+.pumpInfoBox .pumpInfoTitle .pumpInfoTitlePic.jzPic {
+  background: #eb7642;
+}
+.pumpInfoBox .pumpInfoTitle .pumpInfoTitlePic span {
+  font-size: 14px;
+  color: #fff;
+}
+.pumpInfoBox .pumpInfoTitle .headerArrow {
+  margin-top: 4px;
+  color: #ccc;
+}
+.pumpInfoBox .pumpInfoList {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.pumpInfoBox .pumpInfoList > li {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #f2f1f1;
+  font-size: 12px;
+}
+.pumpInfoBox .pumpInfoList > li:last-child {
+  border-bottom: none;
+}
+.pumpInfoBox .pumpInfoList > li .pumpInfoLeft {
+  float: left;
+  width: 40%;
+  color: #999;
+}
+.pumpInfoBox .pumpInfoList > li .pumpInfoLeft .pumpInfoPic {
+  float: left;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cccccc;
+  margin: 17px 8px 0 14px;
+}
+.pumpInfoBox .pumpInfoList > li .pumpInfoRight {
+  float: right;
+  width: 57%;
+  color: #333;
+  text-align: right;
+  padding-right: 3%;
+  overflow: hidden;
+}

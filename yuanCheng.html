@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/yuanCheng.css" />
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="fnAction/md5-min.js"></script>
+		<script type="text/javascript" src="JS_ext/BDPushPlugin.js"></script>
+	</head>
+
+	<body>
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-scalable">
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="offCanTop">
+							
+							<ul class="mui-table-view yuanChengNameBox">
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:;" class="yuanChengNameBoxItem">
+										<img class="mui-media-object mui-pull-left" src="images/shuijiao.jpg">
+										<div class="mui-media-body">									
+										 	<p class='mui-ellipsis pumpTxt'>远程监控系统名称</p>
+											<p class='mui-ellipsis pumpAddress'>上海市青浦区盈港东路6355</p>
+										</div>
+									</a>
+								</li>				
+							</ul>
+							<ul class=" mui-table-view mui-grid-view mui-grid-9 yuanChengNumBox">
+							    <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+							    	<a href="#">			           
+							           <div class="onOfflineNum">12</div>
+										<div class="statusTxt">在线</div>
+							    	</a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+							    	<a href="#">			           
+							           <div class="onOfflineNum">12</div>
+										<div class="statusTxt">离线</div>
+							    	</a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+							    	<a href="#">			           
+							           <div class="onOfflineNum">12</div>
+										<div class="statusTxt">报警</div>
+							    	</a>
+							    </li>
+							    
+							</ul> 
+							
+						</div>
+						
+						
+						<div class="content">
+							<ul class="mui-table-view mui-grid-view mui-grid-9 sheBeiItemBox">
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a class="bengFang" href="bengFangPage.html">
+					                     <img class="sheBeiItemBg" src="images/bz.png" alt="" />
+					                    <div class="mui-media-body">泵房</div>
+					            	</a>
+					            </li>
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="bengFangPage.html">
+					                    <img class="sheBeiItemBg" src="images/ll.png" alt="" />
+					                    <div class="mui-media-body">流量</div>
+					            	</a>
+					            </li>
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="bengFangPage.html">
+					                    <img class="sheBeiItemBg" src="images/yl.png" alt="" />
+					                    <div class="mui-media-body">压力</div>
+					            	</a>
+					            </li>
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="bengFangPage.html">
+					                     <img class="sheBeiItemBg" src="images/fm.png" alt="" />
+					                    <div class="mui-media-body">阀门</div>
+					            	</a>
+					            </li>
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="bengFangPage.html">
+					                     <img class="sheBeiItemBg" src="images/tf.png" alt="" />
+					                    <div class="mui-media-body">调峰</div>
+					            	</a>
+					            </li>
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="#">
+					                     <img class="sheBeiItemBg" src="images/sv.png" alt="" />
+					                    <div class="mui-media-body">水厂</div>
+					            	</a>
+					            </li>
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="sheBeiPage.html">
+					                     <img class="sheBeiItemBg" src="images/db.png" alt="" />
+					                    <div class="mui-media-body">大表</div>
+					            	</a>
+					            </li>
+					            
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="sheBeiPage.html">
+					                     <img class="sheBeiItemBg" src="images/sy.png" alt="" />
+					                    <div class="mui-media-body">水源</div>
+					            	</a>
+					            </li>
+					            
+					            
+					            
+					            <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
+					            	<a href="sheBeiPage.html">
+					                     <img class="sheBeiItemBg" src="images/sz.png" alt="" />
+					                    <div class="mui-media-body">水质</div>
+					            	</a>
+					            </li>
+					            
+					            
+					            
+					        </ul> 
+							
+						</div>
+						
+						
+						<ul class="mui-table-view mui-table-view-chevron fenXiItemBox">
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									<span class="fenXiItemBoxBg warn"></span>
+									<span>报警信息 <span class="mui-badge mui-badge-danger">9</span></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									<span class="fenXiItemBoxBg jueCe"></span>
+									<span>决策分析 <span class="mui-badge">9</span></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									<span class="fenXiItemBoxBg weiHu"></span>
+									<span>维护保养 <span class="mui-badge">9</span></span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									<span class="fenXiItemBoxBg xunJian"></span>
+									<span>巡检排查 <span class="mui-badge">9</span></span>
+								</a>
+							</li>
+							
+
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav yuanChengTitleBox">
+					<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
+					<h1 class="mui-title yuanChengTitle">远程监控</h1>
+				</header>
+				<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						
+						<div class="mui-row zheXianBox">
+					        <div class="mui-col-xs-12 zheXian">
+					            
+					        </div>
+					       
+					    </div>
+					    
+    					<div class="mui-row bingTuBox">
+					        <div class="mui-col-xs-4 bing1">
+					            
+					        </div>
+					       <div class="mui-col-xs-4 bing2">
+					           
+					        </div>
+					        <div class="mui-col-xs-4 bing3">
+					           
+					        </div>
+					    </div>
+					    <div class="mui-row zhuXingBox">
+					        <div class="mui-col-xs-6 zhuXing1">
+					           
+					        </div>
+					        <div class="mui-col-xs-6 zhuXing2">
+					            
+					        </div>
+					       
+					    </div>
+						<div class="mui-row huanXingBox">
+					        <div class="mui-col-xs-6 huanXing1">
+					            
+					        </div>
+					       <div class="mui-col-xs-6">
+					            <div class="huanXing2"></div>
+					            <div class="huanXing3"></div>
+					        </div>
+					    </div>
+
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/echarts.min.js"></script>
+		<script>
+			mui.init({
+				//下拉刷新、上拉加载
+				pullRefresh:{
+					
+				},
+				//手势配置
+				gestureConfig:{
+					'popGesture': 'none'
+				},
+				//侧滑关闭
+				swipeBack:false,
+				//监听Android手机的back、menu按键
+				keyEventBind:{
+					backButton:false,
+					menubutton: false
+				},
+				//处理窗口关闭前的业务
+				beforeback:function(){},
+				
+				statusBarBackground: '#fff'
+			});
+			
+			
+			
+
+			
+			//主列表点击事件
+			mui('.sheBeiItemBox').on('tap', 'a', function() {
+				
+				var id = this.getAttribute("data-wid");
+			
+				if(!id) {
+					id = this.getAttribute('href');
+				}
+				var href = this.getAttribute('href');
+
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus){
+					
+					location.href = href;
+					return;
+				}else {
+					
+					
+				}
+
+
+			});
+				if(mui.os.plus){
+					document.querySelector(".bengFang").addEventListener("tap", function() {
+						
+		
+						$.ActionFn.selfOpenWindow("BengFangPage", "bengFangPage.html");
+					})
+					
+				}
+			 //侧滑容器父节点
+			var offCanvasWrapper = mui('#offCanvasWrapper');
+			 //主界面容器
+			var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+			 //菜单容器
+			var offCanvasSide = document.getElementById("offCanvasSide");
+			
+			 //主界面和侧滑菜单界面均支持区域滚动；
+			mui('#offCanvasSideScroll').scroll();
+			mui('#offCanvasContentScroll').scroll();
+			 //实现ios平台的侧滑关闭页面；
+			if (mui.os.plus && mui.os.ios) {
+				offCanvasWrapper[0].addEventListener('shown', function(e) { //菜单显示完成事件
+					plus.webview.currentWebview().setStyle({
+						'popGesture': 'none'
+					});
+				});
+				offCanvasWrapper[0].addEventListener('hidden', function(e) { //菜单关闭完成事件
+					plus.webview.currentWebview().setStyle({
+						'popGesture': 'close'
+					});
+				});
+			}
+			
+			
+			
+			
+		</script>
+		
+	</body>
+
+</html>

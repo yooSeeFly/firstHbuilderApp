@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>泵房监控首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--<link rel="stylesheet" href="css/reset.css" />-->
+		
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="css/mui.picker.css" />
+		<link rel="stylesheet" href="css/mui.poppicker.css" />
+		<link rel="stylesheet" href="css/pumpDetail.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		
+	</head>
+
+	<body>
+		
+		<div class="detailHeader">
+			<a class="headerArrow mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--<a class="headerArrow mui-icon mui-icon mui-icon-more mui-pull-right"></a>-->
+			<div class="detailPumpName">上海熊猫宿舍</div>
+			<a class="areaSlect mui-btn " id="showUserPicker">A1九组12312[高区] <span class="mui-icon mui-icon-arrowdown"></span></a>
+			<div class="pumpPicBox"></div>
+			<div class="adressTime clearfix">
+				<div class="adressBox"><span class="iconfont">1</span>上海盈港东路6355</div>
+				<div class="timeBox"><span class="iconfont"></span>2017-12-12 12:12:12</div>
+			</div>
+			
+		</div>
+		
+		
+		<!--<button type="button" class="caiJiButton">采<br />集</button>-->
+		
+		
+		<div class="setBox">
+			<span class="mui-icon mui-icon-gear"></span>
+		</div>
+		<!--<div class="dataItemBox">
+			<ul class="dataItemList">
+				<li class="dataItemListItem">实时数据</li>
+				<li class="dataItemListItem">机组信息</li>
+				<li class="dataItemListItem">数据报表</li>
+				<li class="dataItemListItem">预警报警</li>
+				<li class="dataItemListItem">数据报表</li>
+				<li class="dataItemListItem">预警报警</li>
+			</ul>
+		</div>-->
+		<div id="slider" class="mui-slider dataItemSliderBox">
+				
+			
+				
+		
+			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll dataItemSlider">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							实时数据
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							机组信息
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+							数据报表
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+							预警报警
+						</a>
+						
+					</div>
+				</div>
+			</div>
+			
+				<div class="mui-content">
+			
+		
+			
+				</div>
+		
+		
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="fnAction/FunctionAction.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script type="text/javascript">
+			
+			
+			
+			(function($, doc) {
+				
+				
+//				var subpages = ['a.html', 'b.html', 'c.html', 'd.html'];  
+				
+				
+				$.init({
+					gestureConfig:{
+					   
+					   swipe: true, //默认为true
+					   drag: true, //默认为true
+					   hold:false,//默认为false，不监听
+					   release:false//默认为false，不监听
+					},
+//					subpages:[{
+////						url:'pumpCurrentData.html',
+////					    id:'pumpCurrentData',
+//						
+//					}]
+				});
+				
+				
+				document.addEventListener('dragstart',function(e){
+					
+					document.addEventListener('drag',function(e){
+//						console.log(e.detail.center.y);
+
+//						console.log(jQuery('body').scrollTop());
+						var bodyScorllTop=jQuery('body').scrollTop();
+						if(bodyScorllTop>=300){ 
+//							jQuery('.dataItemSliderBox ').addClass('fixed');
+							jQuery('#sliderSegmentedControl ').addClass('fixed');
+							
+//							jQuery('#sliderSegmentedControl2 ').addClass('fixed');
+							
+						}else  {
+//							jQuery('#sliderSegmentedControl2 ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox').removeClass('fixed');
+								jQuery('#sliderSegmentedControl ').removeClass('fixed');
+						}
+					})
+					document.addEventListener('dragend',function(e){
+//						console.log(e.detail.center.y);
+
+//						console.log(jQuery('body').scrollTop());
+						var bodyScorllTop=jQuery('body').scrollTop();
+						if(bodyScorllTop>=300){ 
+//							jQuery('.dataItemSliderBox ').addClass('fixed');
+							jQuery('#sliderSegmentedControl ').addClass('fixed');
+							
+//							jQuery('#sliderSegmentedControl2 ').addClass('fixed');
+							
+						}else  {
+//							jQuery('#sliderSegmentedControl2 ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox').removeClass('fixed');
+								jQuery('#sliderSegmentedControl ').removeClass('fixed');
+						}
+					})
+				})
+				document.onscroll=function(){
+				
+					var bodyScorllTop=jQuery('body').scrollTop();
+						if(bodyScorllTop>=300){ 
+//							jQuery('.dataItemSliderBox ').addClass('fixed');
+							jQuery('#sliderSegmentedControl ').addClass('fixed');
+							
+//							jQuery('#sliderSegmentedControl2 ').addClass('fixed');
+							
+						}else  {
+//							jQuery('#sliderSegmentedControl2 ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox ').removeClass('fixed');
+//							jQuery('.dataItemSliderBox').removeClass('fixed');
+								jQuery('#sliderSegmentedControl ').removeClass('fixed');
+						}
+				}
+				
+				//设置页面事件
+				mui.plusReady(function(){
+					jQuery('.setBox').on('tap',function(){
+					
+					if(mui.os.plus){
+						jQuery.ActionFn.selfFireFunction("bengFangSetInfo", "preAct",'');
+						
+							jQuery.ActionFn.selfOpenWindow("bengFangSetInfo", "bengFangSetInfo.html",'',true);
+						
+						
+						
+					}
+				})
+				})
+				
+				
+//				var scrollUp=true,scrollDown=true;
+//				document.querySelector('.mui-content').addEventListener('dragstart',function(e){
+////					console.log(e.detail.deltaY);
+////					console.log(e);
+//					var oldTop=e.detail.center.y;
+//					document.addEventListener('drag',function(e){
+//						console.log(e.detail);
+////					console.log(e.detail.center.y);
+//					//console.log(jQuery('.detailHeader'));
+//					var newTop=e.detail.center.y-oldTop;
+////					console.log(newTop);
+//					if(e.detail.direction==='up'&&scrollUp&&newTop<-100){
+//						jQuery('.detailHeader').animate({'marginTop':'-320px'},1000);
+//						jQuery('.dataItemSliderBox').animate({'top':'0','bottom':'0'},1000);
+////						jQuery('.dataItemSliderGroup').animate({'scrollTop':0},10);
+//						scrollUp=false;
+//						scrollDown=true;
+////						jQuery('.detailHeader').css('marginTop',(parseFloat(jQuery('.detailHeader').css('marginTop'))+newTop/100)+'px');
+//					}
+//					if(jQuery('.dataItemSliderGroup').scrollTop()<=20){
+////						alert(1);
+//						if(e.detail.direction==='down'&&scrollDown&&newTop>=30){
+//							jQuery('.detailHeader').animate({'marginTop':'0px'},1000);
+//							jQuery('.dataItemSliderBox').animate({'top':'330px','bottom':'0'},1000);
+//							scrollUp=true;
+//							scrollDown=false;
+//						}
+//					}
+					
+//					alert(jQuery('.dataItemSliderGroup').scrollTop());
+//					console.log(newTop);
+					
+//						document.querySelector('.detailHeader').style.top+=e.detail.deltaY;
+					//	console.log(parseFloat(jQuery('.detailHeader').css('top')));
+//					})
+//					document.addEventListener('dragend',function(e){
+//					//	console.log('end');
+////						document.querySelector('.detailHeader').style.marginTop+=e.detail.deltaY;
+//					})
+//				});
+				
+				mui('.mui-switch').each(function() { //循环所有toggle
+				//toggle.classList.contains('mui-active') 可识别该toggle的开关状态
+					
+					this.addEventListener('toggle', function(event) {
+						
+						if(event.detail.isActive){
+							jQuery('.kongZhiBox').addClass('active');
+							jQuery('.dataBox').removeClass('active');
+						}else {
+							jQuery('.dataBox').addClass('active');
+							jQuery('.kongZhiBox').removeClass('active');
+						}
+						
+					});
+				});
+				$.ready(function() {
+					
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: 'ywj',
+						text: '九组12312洁'
+					}, {
+						value: 'aaa',
+						text: '九组12312A'
+					}, {
+						value: 'lj',
+						text: '罗九组12312'
+					}, {
+						value: 'ymt',
+						text: '九组12312w'
+					}, {
+						value: 'shq',
+						text: '史九组12312'
+					}, {
+						value: 'zhbh',
+						text: '章九组12312'
+					}, {
+						value: 'zhy',
+						text: '庄九组12312'
+					}, {
+						value: 'gyf',
+						text: '关九组12312'
+					}, {
+						value: 'zhz',
+						text: '智九组12312子'
+					}, {
+						value: 'gezh', 
+						text: '歌九组12312'
+					}]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+				
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							showUserPickerButton.innerText = JSON.stringify(items[0]);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					//-----------------------------------------
+					
+					
+//					var pumpInfo=jQuery.ActionFn.GetlocalStorage('pumpInfoArr');
+//					console.log(pumpInfo.bengFangId);
+//					console.log(pumpInfo.jZId);
+//					
+					
+				
+				
+				});
+				
+				
+				
+				
+				jQuery('.dataItemSlider a').on('tap',function(){
+					var index=jQuery(this).index();
+					var url='';
+					switch(index){
+						case 0 :{
+							url='pumpCurrentData.html';
+							break;
+						}
+						case 1 :{
+							url='pumpJZInfoSub.html';
+							break;
+						}
+						case 2 :{
+							url='pumpBaoBiao.html';
+							break;
+						}
+						
+					}
+					jQuery.ajax({
+						url:url,
+						cache: false,
+						type:'html',
+						success:function(data){
+							jQuery('.mui-content').html(data);
+						}
+					});
+				});
+				
+				
+			})(mui, document);
+			
+		</script>
+	</body>
+
+</html>
+
+
