@@ -29,13 +29,13 @@
 			
 		    <div class="warnDetailWrap" id="warnDetail">
 		    	
-		    	<ul class="noData" v-show="warnList.length==0">
+		    	<ul class="noData" v-show="dataLen==0">
 		    		<li></li>
 		    		<li></li>
 		    		<li></li>
 		    		<li></li>
 		    	</ul>
-		    	<div class="noDataTip" v-show="warnList.length==0">
+		    	<div class="noDataTip" v-show="dataLen==0">
 		    		无报警记录
 		    	</div>
 		    	
@@ -130,6 +130,19 @@
 //							}
 						]
 					},
+					computed: {
+						dataLen:function(){
+							
+							var len=0;
+							
+							for(var i=0;i<this.warnList.length;i++){
+								len+=this.warnList[i].length;
+								
+							}
+							
+							return len;
+						}
+					}
 					
 				});
 			
@@ -180,6 +193,8 @@
 						firstGetData=false;
 					}
 					vm.warnList=dataDealFn(data.data);
+					console.log(JSON.stringify(vm.warnList));
+					console.log(111222);
 				}
 			}
 			//数据 处理 函数
