@@ -95,7 +95,7 @@
 					$.each(alermPra,function(ivd,val){
 						console.log(alermPra[ivd]);
 					});
-			console.log(alermPra); 
+			console.log(JSON.stringify(alermPra)); 
 			
 			
 //			$.ajax({
@@ -112,11 +112,14 @@
 //				}
 //			});
 
-			$.ActionFn.sendData_GetData('/V_YCJK/Search_Pump',alermPra,searchPump);
-				
-			}
+			$.ActionFn.sendData_GetData('/V_YCJK/Search_Pump',alermPra,searchPump,errorFn);
 			
+			}
+			function errorFn(data){
+				console.log(JSON.stringify(data));
+			}
 			function searchPump(data){
+				
 				console.log(JSON.stringify(data));
 				dataTotal=data.total;
 //				$.ActionFn.SetlocalStorage("pumpNum",dataTotal);

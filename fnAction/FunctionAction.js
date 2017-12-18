@@ -5,8 +5,8 @@
 		extras: "extras",
 		_ConnectionType: "",
 //		_SelUrl: "http://192.168.1.50:85",
-//		_SelUrl: "http://192.168.1.97:8008",
-		_SelUrl:"http://new.s-water.cn",
+		_SelUrl: "http://192.168.1.97:8008",
+//		_SelUrl:"http://new.s-water.cn",
 		/*
 		 *发送数据
 		 * 
