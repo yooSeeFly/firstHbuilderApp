@@ -284,7 +284,7 @@
 				if (data.success) {
 //					alert(JSON.stringify(data.obj.url));
 					if(data.obj.isUpdate){
-						plus.ui.confirm('是否更新', function(i) {
+						plus.ui.confirm(data.obj.description, function(i) {
 							
 							if (0 == i.index) {
 	//							alert(1);

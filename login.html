@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<div class="mainBox">
-			<div class="logoBox"></div>
+			<div class="logoBox" id="logo"></div>
 			<h3 class="logoText">熊猫智慧水务</h3>		
 			<div class="inputBox">
 				<div class="userBox infoBox">
@@ -104,6 +104,18 @@ mui.init({
 		}
 		
 	}
+	
+	//更改测试服务器
+	window.localStorage.setItem('_selURL','http://new.s-water.cn');
+	var touchCount=10;
+	var touchLogo=document.getElementById('logo');
+	touchLogo.addEventListener("tap",function(){
+		touchCount--;
+		if(touchCount<0){
+			window.localStorage.setItem('_selURL','http://192.168.1.97:8008')
+		}
+	});
+	
 	var btn=document.getElementById('login');
 	btn.addEventListener("tap",function(){
 	console.log(00);
@@ -128,7 +140,7 @@ mui.init({
 		
 		console.log(33 );
 		function successCallBac(returnData){
-//			console.log(JSON.stringify(returnData));
+			console.log(JSON.stringify(returnData));
 //			console.log(objectData.FName);
 //			console.log(objectData.FPassWord);
 //			console.log(returnData.model.TokenID);
@@ -139,6 +151,7 @@ mui.init({
 			
 			userInfo.TokenID=returnData.model.TokenID;
 			userInfo.UserID=returnData.model.UserID;
+			userInfo.UserType=returnData.model.UserType;
 			$.ActionFn.SetlocalStorage("userInfo",userInfo);   
 			if(returnData.model.Status===1){
 				if(!mui.os.plus){
