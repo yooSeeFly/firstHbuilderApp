@@ -1,17 +1,21 @@
 (function($) {
 	var ActionFn = function() {};
 	var returnData = "";
+//	alert(window.localStorage.getItem('_selURL'));
 	ActionFn.prototype = {
 		extras: "extras",
 		_ConnectionType: "",
 //		_SelUrl: "http://192.168.1.50:85",
 //		_SelUrl: "http://192.168.1.97:8008",
-		_SelUrl:"http://new.s-water.cn",
+//		_SelUrl:"http://new.s-water.cn",
+		_SelUrl:window.localStorage.getItem('_selURL')?window.localStorage.getItem('_selURL'):'http://new.s-water.cn',
 		/*
 		 *发送数据
 		 * 
 		 */
 		postData: function(xurl, SubmitData, CallBackSuccess, CallBackError, callBackFinish) {
+			console.log(window.localStorage.getItem('_selURL'));
+			console.log(1111);
 			/*
 			发送前增加网络判断
 			*/

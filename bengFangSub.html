@@ -95,7 +95,7 @@
 					$.each(alermPra,function(ivd,val){
 						console.log(alermPra[ivd]);
 					});
-			console.log(alermPra); 
+			console.log(JSON.stringify(alermPra)); 
 			
 			
 //			$.ajax({
@@ -113,12 +113,25 @@
 //			});
 
 			$.ActionFn.sendData_GetData('/V_YCJK/Search_Pump',alermPra,searchPump);
-				
+			
 			}
 			
+			
 			function searchPump(data){
+				
+				var userType=$.ActionFn.GetlocalStorage("userInfo").UserType; 
+				
+				if(userType==3 || userType==2){
+					dataTotal=data.data[1].jsonData.total;
+					data=data.data[1].jsonData;
+//					console.log(JSON.stringify(data));
+//					console.log(323);
+				}else {
+					dataTotal=data.total;
+					
+				}
 				console.log(JSON.stringify(data));
-				dataTotal=data.total;
+				
 //				$.ActionFn.SetlocalStorage("pumpNum",dataTotal);
 			var father = plus.webview.getWebviewById('bengFangPage');
 //			mui.fire(father,"pageNum",{
